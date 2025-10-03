@@ -1,0 +1,10 @@
+# ... (rest of the workflow file)
+
+# This step is often used to upload the built site
+- name: Upload pages artifact
+  uses: actions/upload-pages-artifact@v3
+  with:
+    # THIS is the crucial line you must ensure is set to 'src'
+    path: 'src' 
+
+# ... (rest of the workflow file)
