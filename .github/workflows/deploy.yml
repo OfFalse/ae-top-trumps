@@ -23,14 +23,14 @@ jobs:
         uses: actions/checkout@v4
       
       # Optional: If your project needs to be built (e.g., React, Vue, Svelte), add your build steps here:
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: '20' 
-      # - name: Install dependencies
-      #   run: npm install
-      # - name: Build static site (assuming it outputs to 'src' or you copy files to 'src')
-      #   run: npm run build 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' 
+      - name: Install dependencies
+        run: npm install
+      - name: Build static site (assuming it outputs to 'src' or you copy files to 'src')
+        run: npm run predeploy 
       
       # This step packages the files in the 'src' folder and uploads them as an artifact
       - name: Upload Pages artifact
