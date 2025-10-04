@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import List from "./List";
 
 const sampleHeaders = [
@@ -14,7 +14,7 @@ const sampleItems = [
 ];
 describe("List Component", () => {
   test("component renders", () => {
-    render(<List />);
+    render(<List headers={sampleHeaders} />);
     expect(screen.getByRole("table")).toBeInTheDocument();
   });
   test("renders with sample headers", () => {
@@ -30,13 +30,26 @@ describe("List Component", () => {
     expect(screen.getByText("Item 2")).toBeInTheDocument();
     expect(screen.getByText("Item 3")).toBeInTheDocument();
   });
-});
 
-// Im going to do TDD on a List component using the Carbon Design Sytem
-// The List component will display a list of items passed to it as props
-// Each item will have a title and a description
-// The List component will use the Carbon List component to display the items
-// The list will have two headers: Title and Skill Level
-// Each item in the list must be removable by clicking a remove button next to it
-// The List component will also have a button to clear all items from the list
-// The List component will be tested using Jest and React Testing Library
+  test("renders remove link for each item", () => {
+    render(<List headers={sampleHeaders} items={sampleItems} />);
+    const removeLinks = screen.getAllByText("Remove");
+    expect(removeLinks.length).toBe(3);
+  });
+
+  test("click remove link", () => {
+    render(<List headers={sampleHeaders} items={sampleItems} />);
+    const removeLink = screen.getByTestId("remove-link-0");
+    fireEvent.click(removeLink);
+    const removeLinks = screen.getAllByText("Remove");
+    expect(removeLinks.length).toBe(2);
+    expect(screen.queryByText("Item 1")).not.toBeInTheDocument();
+    expect(screen.getByText("Item 2")).toBeInTheDocument();
+    expect(screen.getByText("Item 3")).toBeInTheDocument();
+  });
+
+  test("table is not rendered when no headers or items", () => {
+    render(<List />);
+    expect(screen.queryByRole("table")).not.toBeInTheDocument();
+  });
+});
