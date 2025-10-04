@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # THIS IS THE KEY PART: It points the deployment artifact to your 'src' folder
-          path: 'src' 
+          path: 'build' 
 
   # The 'deploy' job takes the uploaded artifact and publishes it to GitHub Pages
   deploy:
