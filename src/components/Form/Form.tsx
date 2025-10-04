@@ -25,7 +25,7 @@ const UserForm: React.FC<UserFormProps> = ({
   const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setFullName(value);
-    setIsCurrentClientInvalid(false);
+    setIsFullNameInvalid(false);
   };
 
   const handleCurrentClientChange = (
