@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "title": "Item 1",
+    "skillLevel": "Beginner"
+  },
+  {
+    "id": 2,
+    "title": "Item 2",
+    "skillLevel": "Pro"
+  },
+  {
+    "id": 3,
+    "title": "Item 3",
+    "skillLevel": "Master"
+  },
+  {
+    "id": 4,
+    "title": "Item 4",
+    "skillLevel": "Intermediate"
+  },
+  {
+    "id": 5,
+    "title": "Item 5",
+    "skillLevel": "Beginner"
+  }
+]
