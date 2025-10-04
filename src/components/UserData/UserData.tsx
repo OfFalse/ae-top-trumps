@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import UserForm from "../Form/Form";
 import { Button, Stack } from "@carbon/react";
+import List from "../List/List";
+import list from "../../dummy_data/listitem.json";
+
+const sampleHeaders = [
+  { key: "title", header: "Title" },
+  { key: "skillLevel", header: "Skill Level" },
+  { key: "actions", header: "Actions" },
+];
 
 const UserData: React.FC = () => {
   const [fullName, setFullName] = useState("");
@@ -40,6 +48,7 @@ const UserData: React.FC = () => {
           isCurrentClientInvalid={isCurrentClientInvalid}
           setIsCurrentClientInvalid={setIsCurrentClientInvalid}
         />
+        <List headers={sampleHeaders} items={list} />
         <Button onClick={handleSubmit}>Create TopTrump</Button>
       </Stack>
     </div>
