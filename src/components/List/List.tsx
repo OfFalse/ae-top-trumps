@@ -27,8 +27,7 @@ const List: React.FC<ListProps> = ({ headers, items }) => {
 
   return (
     <>
-      {(!headers || headers.length === 0) &&
-      (!listItems || listItems.length === 0) ? null : (
+      {!listItems || listItems.length === 0 ? null : (
         <Table>
           <TableHead>
             <TableRow>
@@ -44,7 +43,7 @@ const List: React.FC<ListProps> = ({ headers, items }) => {
                 <td>{item.skillLevel}</td>
                 <td>
                   <Link
-                    data-testId={`remove-link-${i}`}
+                    data-testid={`remove-link-${i}`}
                     id={`remove-link-${i}`}
                     aria-label={`Remove ${item.title}`}
                     href="#"

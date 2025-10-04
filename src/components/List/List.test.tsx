@@ -14,7 +14,7 @@ const sampleItems = [
 ];
 describe("List Component", () => {
   test("component renders", () => {
-    render(<List headers={sampleHeaders} />);
+    render(<List headers={sampleHeaders} items={sampleItems} />);
     expect(screen.getByRole("table")).toBeInTheDocument();
   });
   test("renders with sample headers", () => {
@@ -48,8 +48,8 @@ describe("List Component", () => {
     expect(screen.getByText("Item 3")).toBeInTheDocument();
   });
 
-  test("table is not rendered when no headers or items", () => {
-    render(<List />);
+  test("table is not rendered when no items", () => {
+    render(<List headers={sampleHeaders} />);
     expect(screen.queryByRole("table")).not.toBeInTheDocument();
   });
 });
