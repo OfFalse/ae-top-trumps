@@ -3,41 +3,62 @@ name: Deploy to GitHub Pages
 on:
   push:
     # Set this to the branch you want to trigger the deployment from (e.g., main or master)
-    branches: ["main"] 
-  
+    branches: ["main"]
+
   # Allows you to run the workflow manually from the Actions tab
   workflow_dispatch:
 
 # Grant GITHUB_TOKEN the permissions required for deployment
 permissions:
   contents: read
-  pages: write       # Required to deploy to Pages
-  id-token: write    # Required for the deploy-pages action
+  pages: write # Required to deploy to Pages
+  id-token: write # Required for the deploy-pages action
 
 jobs:
-  # The 'build' job checks out the code and uploads the artifact
-  build:
+  # New job to run tests independently
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test -- --watchAll=false
+        env:
+          CI: true
+
+  # The 'build' job checks out the code and uploads the artifact
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       # Optional: If your project needs to be built (e.g., React, Vue, Svelte), add your build steps here:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' 
+          node-version: "20"
       - name: Install dependencies
         run: npm install
       - name: Build static site (assuming it outputs to 'src' or you copy files to 'src')
-        run: npm run predeploy 
-      
+        run: npm run predeploy
+
       # This step packages the files in the 'src' folder and uploads them as an artifact
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # THIS IS THE KEY PART: It points the deployment artifact to your 'src' folder
-          path: 'build' 
+          path: "build"
 
   # The 'deploy' job takes the uploaded artifact and publishes it to GitHub Pages
   deploy:
