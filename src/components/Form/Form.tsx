@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, TextInput, Stack } from "@carbon/react";
+import { TextInput, Stack } from "@carbon/react";
 
 interface UserFormProps {
   fullName: string;
@@ -37,30 +37,28 @@ const UserForm: React.FC<UserFormProps> = ({
   };
 
   return (
-    <Form>
-      <Stack gap={7}>
-        <TextInput
-          id="full-name"
-          labelText="Full Name"
-          value={fullName}
-          onChange={handleFullNameChange}
-          invalid={isFullNameInvalid}
-          invalidText="Full Name is a required field."
-          placeholder="e.g. Jane Doe"
-          required
-        />
-        <TextInput
-          id="current-client"
-          labelText="Current Client"
-          value={currentClient}
-          onChange={handleCurrentClientChange}
-          invalid={isCurrentClientInvalid}
-          invalidText="Current Client is a required field."
-          placeholder="e.g. Facebook"
-          required
-        />
-      </Stack>
-    </Form>
+    <Stack gap={7}>
+      <TextInput
+        id="full-name"
+        labelText="Full Name"
+        value={fullName}
+        onChange={handleFullNameChange}
+        invalid={isFullNameInvalid}
+        invalidText="Full Name is a required field."
+        placeholder="e.g. Jane Doe"
+        required
+      />
+      <TextInput
+        id="current-client"
+        labelText="Current Client"
+        value={currentClient}
+        onChange={handleCurrentClientChange}
+        invalid={isCurrentClientInvalid}
+        invalidText="Current Client is a required field."
+        placeholder="e.g. Facebook"
+        required
+      />
+    </Stack>
   );
 };
 
