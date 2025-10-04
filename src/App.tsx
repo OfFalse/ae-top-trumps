@@ -11,9 +11,13 @@ function App() {
           Top Trumps
         </HeaderName>
       </Header>
-      <Content>
-        <Grid fullWidth>
-          <Column lg={8} md={6} sm={4}>
+      <Content className="main-content">
+        <Grid>
+          <Column
+            sm={4}
+            md={{ span: 6, offset: 1 }}
+            lg={{ span: 8, offset: 4 }}
+          >
             <UserData />
           </Column>
         </Grid>
