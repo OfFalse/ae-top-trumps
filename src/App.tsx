@@ -1,6 +1,6 @@
 import "./App.css";
 import "@carbon/styles/css/styles.css";
-import { Header, HeaderName } from "@carbon/react";
+import { Header, HeaderName, Content, Grid, Column } from "@carbon/react";
 import UserData from "./components/UserData/UserData";
 
 function App() {
@@ -11,9 +11,13 @@ function App() {
           Top Trumps
         </HeaderName>
       </Header>
-      <header className="App-header">
-        <UserData />
-      </header>
+      <Content>
+        <Grid fullWidth>
+          <Column lg={8} md={6} sm={4}>
+            <UserData />
+          </Column>
+        </Grid>
+      </Content>
     </div>
   );
 }

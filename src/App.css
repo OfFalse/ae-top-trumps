@@ -1,5 +1,10 @@
+/* Base app container uses Carbon background and vertical layout */
 .App {
-  text-align: center;
+  min-height: 100vh;
+  background-color: var(--cds-background);
+  color: var(--cds-text-primary);
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -13,19 +18,16 @@
   }
 }
 
+/* Main content area follows Carbon layer background and spacing */
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: var(--cds-layer);
+  color: var(--cds-text-primary);
+  padding: var(--cds-spacing-09) var(--cds-spacing-07);
+  display: block;
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--cds-link-primary, #0f62fe);
 }
 
 @keyframes App-logo-spin {

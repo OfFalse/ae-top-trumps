@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import UserForm from "../Form/Form";
-import { Button, Stack } from "@carbon/react";
+import { Button, Form, Stack } from "@carbon/react";
 import List from "../List/List";
 import list from "../../dummy_data/listitem.json";
 
@@ -31,7 +31,7 @@ const UserData: React.FC = () => {
   };
 
   return (
-    <div>
+    <Form aria-label="Top Trump Form">
       <Stack gap={7} style={{ marginBottom: "20px" }}>
         <h2>Enter Your Details</h2>
         <p>
@@ -51,7 +51,7 @@ const UserData: React.FC = () => {
         <List headers={sampleHeaders} items={list} />
         <Button onClick={handleSubmit}>Create TopTrump</Button>
       </Stack>
-    </div>
+    </Form>
   );
 };
 

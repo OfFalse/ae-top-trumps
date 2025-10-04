@@ -52,4 +52,8 @@ describe("List Component", () => {
     render(<List headers={sampleHeaders} />);
     expect(screen.queryByRole("table")).not.toBeInTheDocument();
   });
+  test("table is not rendered when items is empty array", () => {
+    render(<List headers={sampleHeaders} items={[]} />);
+    expect(screen.queryByRole("table")).not.toBeInTheDocument();
+  });
 });
