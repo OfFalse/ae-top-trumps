@@ -1,8 +1,7 @@
-import React from "react";
 import "./App.css";
 import "@carbon/styles/css/styles.css";
 import { Header, HeaderName } from "@carbon/react";
-import UserForm from "./components/Form/Form";
+import UserData from "./components/UserData/UserData";
 
 function App() {
   return (
@@ -13,7 +12,7 @@ function App() {
         </HeaderName>
       </Header>
       <header className="App-header">
-        <UserForm />
+        <UserData />
       </header>
     </div>
   );

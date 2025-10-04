@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, TextInput, Stack } from "@carbon/react";
 
-const UserForm = () => {
-  const [fullName, setFullName] = useState("");
-  const [isFullNameInvalid, setIsFullNameInvalid] = useState(false);
+interface UserFormProps {
+  fullName: string;
+  setFullName: (name: string) => void;
+  isFullNameInvalid: boolean;
+  setIsFullNameInvalid: (isInvalid: boolean) => void;
+  currentClient: string;
+  setCurrentClient: (client: string) => void;
+  isCurrentClientInvalid: boolean;
+  setIsCurrentClientInvalid: (isInvalid: boolean) => void;
+}
 
-  const [currentClient, setCurrentClient] = useState("");
-  const [isCurrentClientInvalid, setIsCurrentClientInvalid] = useState(false);
-
+const UserForm: React.FC<UserFormProps> = ({
+  fullName,
+  setFullName,
+  isFullNameInvalid,
+  setIsFullNameInvalid,
+  currentClient,
+  setCurrentClient,
+  isCurrentClientInvalid,
+  setIsCurrentClientInvalid,
+}) => {
   const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setFullName(value);
