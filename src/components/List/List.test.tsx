@@ -18,7 +18,7 @@ describe("List Component", () => {
     expect(screen.getByRole("table")).toBeInTheDocument();
   });
   test("renders with sample headers", () => {
-    render(<List headers={sampleHeaders} />);
+    render(<List headers={sampleHeaders} items={sampleItems} />);
     expect(screen.getByText("Title")).toBeInTheDocument();
     expect(screen.getByText("Skill Level")).toBeInTheDocument();
     expect(screen.getByText("Actions")).toBeInTheDocument();
