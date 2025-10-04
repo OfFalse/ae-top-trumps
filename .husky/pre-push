@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+# . "$(dirname "$0")/h"
+
+# Run tests once without watch to keep commits fast
+npm test -- --watchAll=false
