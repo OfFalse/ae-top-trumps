@@ -34,19 +34,35 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
   };
 
   const fetchSkills = async (input: string) => {
-    if (!input) {
+    const query = input?.trim();
+    if (!query) {
       setSkillList([]);
       return;
     }
-
-    const response = await fetch(`https://api.apilayer.com/skills?q=${input}`, {
-      method: "GET",
-      headers: {
-        apikey: "FrV9cdgbzq8Ff8As0G5mstPG1aYrF7Lg",
-      },
-    });
-    const result = await response.json();
-    setSkillList(result || []);
+    try {
+      const response = await fetch(
+        `https://api.apilayer.com/skills?q=${encodeURIComponent(query)}`,
+        {
+          method: "GET",
+          headers: {
+            apikey: "FrV9cdgbzq8Ff8As0G5mstPG1aYrF7Lg",
+          },
+        },
+      );
+      if (!response || !("ok" in response) || !response.ok) {
+        setSkillList([]);
+        return;
+      }
+      let result: unknown = [];
+      try {
+        result = await response.json();
+      } catch {
+        result = [];
+      }
+      setSkillList(Array.isArray(result) ? (result as string[]) : []);
+    } catch (e) {
+      setSkillList([]);
+    }
   };
 
   useEffect(() => {
