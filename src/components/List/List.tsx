@@ -15,16 +15,25 @@ export interface SkillItem {
 }
 
 interface ListProps {
+  title: string;
   headers?: { key: string; header: string }[];
   items?: SkillItem[];
+  setSelectedSkillsList: React.Dispatch<React.SetStateAction<any[]>>;
 }
 
-const List: React.FC<ListProps> = ({ headers, items }) => {
+const List: React.FC<ListProps> = ({
+  title,
+  headers,
+  items,
+  setSelectedSkillsList,
+}) => {
   const [listItems, setListItems] = useState(items || []);
 
   const handleRemove = (e: React.MouseEvent<HTMLAnchorElement>, id: number) => {
     e.preventDefault();
-    setListItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    setSelectedSkillsList((prevSkills) =>
+      prevSkills.filter((skill) => skill.id !== id),
+    );
   };
 
   useEffect(() => {
@@ -34,34 +43,37 @@ const List: React.FC<ListProps> = ({ headers, items }) => {
   return (
     <>
       {!listItems || listItems.length === 0 ? null : (
-        <Table>
-          <TableHead>
-            <TableRow>
-              {headers?.map((col) => (
-                <TableHeader key={col.key}>{col.header}</TableHeader>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {listItems?.map((item, i) => (
-              <TableRow key={item.id}>
-                <td>{item.title}</td>
-                <td>{item.skillLevel}</td>
-                <td>
-                  <Link
-                    data-testid={`remove-link-${i}`}
-                    id={`remove-link-${i}`}
-                    aria-label={`Remove ${item.title}`}
-                    href="#"
-                    onClick={(e) => handleRemove(e, item.id)}
-                  >
-                    Remove
-                  </Link>
-                </td>
+        <>
+          <h3>{title}</h3>
+          <Table>
+            <TableHead>
+              <TableRow>
+                {headers?.map((col) => (
+                  <TableHeader key={col.key}>{col.header}</TableHeader>
+                ))}
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHead>
+            <TableBody>
+              {listItems?.map((item, i) => (
+                <TableRow key={item.id}>
+                  <td>{item.title}</td>
+                  <td>{item.skillLevel}</td>
+                  <td>
+                    <Link
+                      data-testid={`remove-link-${i}`}
+                      id={`remove-link-${i}`}
+                      aria-label={`Remove ${item.title}`}
+                      href="#"
+                      onClick={(e) => handleRemove(e, item.id)}
+                    >
+                      Remove
+                    </Link>
+                  </td>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </>
       )}
     </>
   );

@@ -8,7 +8,6 @@ interface UserFormProps {
   isFullNameInvalid: boolean;
   isCurrentClientInvalid: boolean;
   currentClient: string;
-  selectedSkillList: SkillItem[];
   setIsFullNameInvalid: (isInvalid: boolean) => void;
   setCurrentClient: (client: string) => void;
   setFullName: (name: string) => void;
@@ -70,6 +69,10 @@ const UserForm: React.FC<UserFormProps> = ({
         autoComplete="organization"
         required
       />
+      <h2>Skills</h2>
+      <p style={{ whiteSpace: "pre-wrap" }}>
+        {`Select your relevant skills and experience. This will help match you to suitable projects.\n\nAdd up to 5 skills.`}
+      </p>
       <SkillsSelector setSelectedSkillList={setSelectedSkillList} />
     </Stack>
   );

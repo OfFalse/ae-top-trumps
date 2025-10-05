@@ -8,4 +8,6 @@ test("renders Carbon header", () => {
   expect(headerElement).toBeInTheDocument();
   const headerName = screen.getByText(/Top Trumps/i);
   expect(headerName).toBeInTheDocument();
+  const skipLink = screen.getByText(/Skip to main content/i);
+  expect(skipLink).toBeInTheDocument();
 });

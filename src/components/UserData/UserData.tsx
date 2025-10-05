@@ -37,7 +37,6 @@ const UserData: React.FC = () => {
         <UserForm
           fullName={fullName}
           setFullName={setFullName}
-          selectedSkillList={selectedSkillsList}
           setSelectedSkillList={setSelectedSkillsList}
           isFullNameInvalid={isFullNameInvalid}
           setIsFullNameInvalid={setIsFullNameInvalid}
@@ -46,7 +45,12 @@ const UserData: React.FC = () => {
           isCurrentClientInvalid={isCurrentClientInvalid}
           setIsCurrentClientInvalid={setIsCurrentClientInvalid}
         />
-        <List headers={sampleHeaders} items={selectedSkillsList} />
+        <List
+          title="Selected Skills"
+          headers={sampleHeaders}
+          items={selectedSkillsList}
+          setSelectedSkillsList={setSelectedSkillsList}
+        />
         <Button onClick={handleSubmit}>Create TopTrump</Button>
       </Stack>
     </Form>
