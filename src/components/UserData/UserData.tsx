@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import UserForm from "../Form/Form";
 import { Button, Form, Stack } from "@carbon/react";
-import List from "../List/List";
-import list from "../../dummy_data/listitem.json";
+import List, { SkillItem } from "../List/List";
 
 const sampleHeaders = [
   { key: "title", header: "Title" },
@@ -16,6 +15,8 @@ const UserData: React.FC = () => {
 
   const [currentClient, setCurrentClient] = useState("");
   const [isCurrentClientInvalid, setIsCurrentClientInvalid] = useState(false);
+
+  const [selectedSkillsList, setSelectedSkillsList] = useState<SkillItem[]>([]);
 
   const handleSubmit = () => {
     // Placeholder for form submission logic
@@ -33,14 +34,11 @@ const UserData: React.FC = () => {
   return (
     <Form aria-label="Top Trump Form">
       <Stack gap={7} style={{ marginBottom: "20px" }}>
-        <h2>Enter Your Details</h2>
-        <p>
-          Please provide your full name and current client to create your
-          TopTrump profile.
-        </p>
         <UserForm
           fullName={fullName}
           setFullName={setFullName}
+          selectedSkillList={selectedSkillsList}
+          setSelectedSkillList={setSelectedSkillsList}
           isFullNameInvalid={isFullNameInvalid}
           setIsFullNameInvalid={setIsFullNameInvalid}
           currentClient={currentClient}
@@ -48,7 +46,7 @@ const UserData: React.FC = () => {
           isCurrentClientInvalid={isCurrentClientInvalid}
           setIsCurrentClientInvalid={setIsCurrentClientInvalid}
         />
-        <List headers={sampleHeaders} items={list} />
+        <List headers={sampleHeaders} items={selectedSkillsList} />
         <Button onClick={handleSubmit}>Create TopTrump</Button>
       </Stack>
     </Form>
