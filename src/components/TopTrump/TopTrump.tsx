@@ -2,6 +2,8 @@ import React from "react";
 import { Tile, Tag } from "@carbon/react";
 import { SkillItem } from "../List/List";
 import { UserAvatar } from "@carbon/react/icons";
+import { downloadAsImage } from "../../utils/downloadAsImage";
+import { Download } from "@carbon/react/icons";
 import "./TopTrump.scss";
 
 interface TopTrumpProps {
@@ -26,9 +28,22 @@ const TopTrumpCard: React.FC<TopTrumpProps> = ({
   selectedSkillsList = [],
   avatar = "",
 }) => {
+  const contentRef = React.useRef<HTMLDivElement>(null);
+
+  const handleDownload = () => {
+    if (contentRef.current) {
+      downloadAsImage(contentRef, fullName || "toptrump");
+    }
+  };
+
   return (
     <div className="cards-container">
-      <Tile className="top-trump-card">
+      <Download
+        onClick={handleDownload}
+        size={32}
+        style={{ cursor: "pointer" }}
+      />
+      <Tile className="top-trump-card" ref={contentRef}>
         <div className="card-header">
           <div className="card-avatar" data-testid="card-avatar">
             {avatar ? (

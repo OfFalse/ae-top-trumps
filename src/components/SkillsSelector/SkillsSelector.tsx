@@ -1,4 +1,11 @@
-import { ComboBox, Dropdown, Button, OnChangeData } from "@carbon/react";
+import {
+  ComboBox,
+  Dropdown,
+  Button,
+  OnChangeData,
+  Column,
+  Grid,
+} from "@carbon/react";
 import React, { useEffect, useState } from "react";
 import { SkillItem } from "../List/List";
 import useDebounce from "../../hooks/useDebounce";
@@ -98,15 +105,8 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
   }, [debouncedSearchTerm]);
 
   return (
-    <>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "2fr 1fr 1fr",
-          gap: "10px",
-          alignItems: "flex-end",
-        }}
-      >
+    <Grid>
+      <Column sm={4} md={6} lg={4}>
         <ComboBox
           id={"skills-combo"}
           items={skillList}
@@ -122,32 +122,38 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
           placeholder="e.g. React"
           invalid={skillLimitError}
         />
-        <div className="single_unit">
-          <Dropdown
-            label="Working level"
-            id="skill-level"
-            titleText="Skill Level"
-            items={SKILL_LEVELS as unknown as string[]}
-            selectedItem={selectedLevel}
-            onChange={({ selectedItem }) => handleLevelChange({ selectedItem })}
-            invalid={skillLimitError}
-          />
-        </div>
-        <div className="single_unit">
-          <Button
-            kind="primary"
-            onClick={() => addSkill(comboValue)}
-            // disable the button if comboValue is empty or only whitespace
-            disabled={!comboValue.trim()}
-          >
-            Add
-          </Button>
-        </div>
-      </div>
+      </Column>
+      <Column sm={4} md={6} lg={2}>
+        <Dropdown
+          label="Working level"
+          id="skill-level"
+          titleText="Skill Level"
+          items={SKILL_LEVELS as unknown as string[]}
+          selectedItem={selectedLevel}
+          onChange={({ selectedItem }) => handleLevelChange({ selectedItem })}
+          invalid={skillLimitError}
+        />
+      </Column>
+      <Column
+        sm={2}
+        md={2}
+        lg={2}
+        style={{ display: "flex", flexDirection: "column" }}
+      >
+        <Button
+          kind="primary"
+          onClick={() => addSkill(comboValue)}
+          // disable the button if comboValue is empty or only whitespace
+          disabled={!comboValue.trim()}
+          style={{ marginTop: "auto", width: "100%" }}
+        >
+          Add
+        </Button>
+      </Column>
       {skillLimitError && (
         <div className="error_message">{SKILL_LIMIT_ERROR_TEXT}</div>
       )}
-    </>
+    </Grid>
   );
 };
 
