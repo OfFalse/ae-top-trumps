@@ -4,11 +4,10 @@
 
 .top-trump-card {
   width: 100%; /* Fill the container by default */
-  min-width: 30rem;
+  min-width: 26rem;
   max-width: 35rem;
-  min-height: 43rem;
+  min-height: 40rem;
   max-height: 48rem;
-  /* use Carbon v11 CSS token */
   border-top: 4px solid var(--cds-interactive);
   background-color: var(--cds-layer);
   border: 1px solid var(--cds-border-subtle);
@@ -29,7 +28,6 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  /* use Carbon v11 CSS token */
   background-color: var(--cds-layer-hover);
   display: flex;
   align-items: center;
