@@ -52,6 +52,10 @@ jobs:
         run: npm install
       - name: Build static site (assuming it outputs to 'src' or you copy files to 'src')
         run: npm run predeploy
+        env:
+          REACT_APP_SKILLS_API_BASE: ${{ secrets.REACT_APP_SKILLS_API_BASE }}
+          REACT_APP_SKILLS_API_KEY: ${{ secrets.REACT_APP_SKILLS_API_KEY }}
+          CI: true
 
       # This step packages the files in the 'src' folder and uploads them as an artifact
       - name: Upload Pages artifact
