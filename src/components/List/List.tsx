@@ -8,9 +8,15 @@ import {
   Link,
 } from "@carbon/react";
 
+export interface SkillItem {
+  id: number;
+  title: string;
+  skillLevel: string;
+}
+
 interface ListProps {
   headers?: { key: string; header: string }[];
-  items?: { id: number; title: string; skillLevel: string }[];
+  items?: SkillItem[];
 }
 
 const List: React.FC<ListProps> = ({ headers, items }) => {
