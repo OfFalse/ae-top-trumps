@@ -7,44 +7,12 @@
   flex-direction: column;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-/* Main content area follows Carbon layer background and spacing */
-.App-header {
-  background-color: var(--cds-layer);
-  color: var(--cds-text-primary);
-  padding: var(--cds-spacing-09) var(--cds-spacing-07);
-  display: block;
-}
-
 /* Center main content area vertically and provide breathing room */
 .main-content {
   display: flex;
   min-height: calc(100vh - 3rem); /* subtract approximate header height */
   padding-top: var(--cds-spacing-09);
   padding-bottom: var(--cds-spacing-09);
-}
-
-.App-link {
-  color: var(--cds-link-primary, #0f62fe);
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .skip-link {
