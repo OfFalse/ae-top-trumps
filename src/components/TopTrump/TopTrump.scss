@@ -1,0 +1,68 @@
+@use "@carbon/react/scss/spacing" as *;
+@use "@carbon/react/scss/theme" as *;
+@use "@carbon/react/scss/type" as *;
+
+.top-trump-card {
+  width: 100%; /* Fill the container by default */
+  min-width: 30rem;
+  max-width: 35rem;
+  min-height: 43rem;
+  max-height: 48rem;
+  /* use Carbon v11 CSS token */
+  border-top: 4px solid var(--cds-interactive);
+  background-color: var(--cds-layer);
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: 0.5rem; /* slightly rounded corners */
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.06),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: $spacing-05;
+  padding-bottom: $spacing-05;
+}
+
+.card-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  /* use Carbon v11 CSS token */
+  background-color: var(--cds-layer-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.card-info {
+  .cds--label-01 {
+    margin-bottom: $spacing-02;
+  }
+}
+
+.skills-section {
+  padding-top: $spacing-05;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-03;
+  padding-top: $spacing-05;
+}
+
+.cards-container {
+  display: grid;
+  gap: 1.5rem;
+  justify-content: center;
+}
