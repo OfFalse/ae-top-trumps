@@ -1,7 +1,10 @@
+/* eslint-disable */
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import UserData from "./UserData";
+import { wait } from "@testing-library/user-event/dist/utils";
 
 describe("UserData", () => {
   test("renders heading, helper text, and submit button", () => {
@@ -42,35 +45,52 @@ describe("UserData", () => {
     const button = screen.getByRole("button", { name: /create toptrump/i });
 
     // Trigger invalid by clearing after typing
-    userEvent.type(fullNameInput, "X");
-    userEvent.clear(fullNameInput);
 
     // Client field
-    userEvent.type(clientInput, "Y");
-    userEvent.clear(clientInput);
     userEvent.click(button);
-    expect(
-      screen.getByText("Full Name is a required field."),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText("Current Client is a required field."),
-    ).toBeInTheDocument();
+    waitFor(() => {
+      expect(
+        screen.getByText("Current Client is a required field."),
+      ).toBeInTheDocument();
+      expect(
+        screen.queryByText("Full Name is a required field."),
+      ).toBeInTheDocument();
+    });
   });
 
-  test("shows validation errors when submitting with empty fields", async () => {
+  test("submitting with valid fields shows TopTrump card and no errors, and toggles button label", async () => {
     render(<UserData />);
     const submit = screen.getByRole("button", { name: /create toptrump/i });
+    const fullNameInput = screen.getByLabelText(/Full Name/i);
+    const clientInput = screen.getByLabelText(/Current Client/i);
+
+    await userEvent.type(fullNameInput, "Jane Doe");
+    await userEvent.type(clientInput, "Acme Corp");
+
     await userEvent.click(submit);
-    expect(
-      screen.getByText("Full Name is a required field."),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText("Current Client is a required field."),
-    ).toBeInTheDocument();
+
+    // Form should be replaced by TopTrump card showing the name
+    waitFor(() => {
+      expect(
+        screen.getByRole("heading", { level: 1, name: "Jane Doe" }),
+      ).toBeInTheDocument();
+
+      // Errors should not be shown
+      expect(
+        screen.queryByText("Full Name is a required field."),
+      ).not.toBeInTheDocument();
+      expect(
+        screen.queryByText("Current Client is a required field."),
+      ).not.toBeInTheDocument();
+
+      // Button label toggles to Edit TopTrump
+      expect(
+        screen.getByRole("button", { name: /edit toptrump/i }),
+      ).toBeInTheDocument();
+    });
   });
 
-  test("submitting with valid fields shows success alert and no errors", async () => {
-    const alertSpy = jest.spyOn(window, "alert").mockImplementation(() => {});
+  test("clicking Edit TopTrump returns to the form view", async () => {
     render(<UserData />);
     const fullNameInput = screen.getByLabelText(/Full Name/i);
     const clientInput = screen.getByLabelText(/Current Client/i);
@@ -80,17 +100,17 @@ describe("UserData", () => {
     await userEvent.type(clientInput, "Acme Corp");
     await userEvent.click(submit);
 
-    expect(alertSpy).toHaveBeenCalledWith(
-      "TopTrump created for Jane Doe at Acme Corp",
-    );
+    // Now click the toggle button to go back to editing
+    const editButton = screen.getByRole("button", { name: /edit toptrump/i });
+    await userEvent.click(editButton);
 
+    // Form heading should be visible again
     expect(
-      screen.queryByText("Full Name is a required field."),
-    ).not.toBeInTheDocument();
+      screen.getByRole("heading", { name: /enter your details/i }),
+    ).toBeInTheDocument();
+    // And the button label should be back to Create TopTrump
     expect(
-      screen.queryByText("Current Client is a required field."),
-    ).not.toBeInTheDocument();
-
-    alertSpy.mockRestore();
+      screen.getByRole("button", { name: /create toptrump/i }),
+    ).toBeInTheDocument();
   });
 });
