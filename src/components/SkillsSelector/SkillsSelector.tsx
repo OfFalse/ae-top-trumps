@@ -13,15 +13,14 @@ interface SkillsSelectorProps {
   setSelectedSkillList: React.Dispatch<React.SetStateAction<any[]>>;
 }
 
-// Use environment variables for API configuration
-// Stored in GitHub Secrets for security
-const API_BASE =
-  process.env.REACT_APP_SKILLS_API_BASE || "https://api.apilayer.com";
-const API_KEY = process.env.REACT_APP_SKILLS_API_KEY;
-
 const SkillsSelector: React.FC<SkillsSelectorProps> = ({
   setSelectedSkillList,
 }) => {
+  // Use environment variables for API configuration
+  // Stored in GitHub Secrets for security
+  const API_BASE =
+    process.env.REACT_APP_SKILLS_API_BASE || "https://api.apilayer.com";
+  const API_KEY = process.env.REACT_APP_SKILLS_API_KEY;
   const [comboValue, setComboValue] = useState("");
   const debouncedSearchTerm = useDebounce(comboValue, 500);
 
@@ -95,6 +94,7 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
 
   useEffect(() => {
     fetchSkills(debouncedSearchTerm);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchTerm]);
 
   return (
