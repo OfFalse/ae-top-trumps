@@ -50,6 +50,16 @@ jobs:
           node-version: "20"
       - name: Install dependencies
         run: npm install
+      - name: Verify API key presence (no secret value leaked)
+        #check to see if the API key is set without exposing its value
+        run: |
+          if [ -n "${REACT_APP_SKILLS_API_KEY}" ]; then
+            echo "::notice title=API Key::REACT_APP_SKILLS_API_KEY is set"
+          else
+            echo "::warning title=API Key::REACT_APP_SKILLS_API_KEY is NOT set"
+          fi
+        env:
+          REACT_APP_SKILLS_API_KEY: ${{ secrets.REACT_APP_SKILLS_API_KEY }}
       - name: Build static site (assuming it outputs to 'src' or you copy files to 'src')
         run: npm run predeploy
         env:
