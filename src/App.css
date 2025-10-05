@@ -46,3 +46,30 @@
     transform: rotate(360deg);
   }
 }
+
+.skip-link {
+  position: absolute;
+  left: -9999px; /* Off-screen positioning for visual hiding */
+  padding: 8px 16px;
+  background-color: #f4f4f4; /* Carbon's $ui-02 */
+  color: #161616; /* Carbon's $text-01 */
+  border: 2px solid #0f62fe; /* Carbon's $interactive-01 focus border */
+  z-index: 8001;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.1s ease-in-out;
+}
+
+/* The link becomes visible when it receives keyboard focus */
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* Ensure the target of the skip link receives focus (usually done via JS/React in production, but simpler CSS focus in this demo) */
+#main-content:focus {
+  outline: 2px solid #0f62fe;
+  outline-offset: 4px;
+}

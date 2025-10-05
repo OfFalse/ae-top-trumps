@@ -6,12 +6,15 @@ import UserData from "./components/UserData/UserData";
 function App() {
   return (
     <div className="App">
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
       <Header aria-label="AE Top Trumps">
         <HeaderName href="#" prefix="AE">
           Top Trumps
         </HeaderName>
       </Header>
-      <Content className="main-content">
+      <Content className="main-content" id="main-content">
         <Grid>
           <Column
             sm={4}
