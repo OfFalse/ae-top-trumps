@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import UserForm from "../Form/Form";
 import { Button, Form, Stack } from "@carbon/react";
 import List, { SkillItem } from "../List/List";
+import TopTrump from "../TopTrump/TopTrump";
 
 const sampleHeaders = [
   { key: "title", header: "Title" },
@@ -16,7 +17,11 @@ const UserData: React.FC = () => {
   const [currentClient, setCurrentClient] = useState("");
   const [isCurrentClientInvalid, setIsCurrentClientInvalid] = useState(false);
 
+  const [buttonText, setButtonText] = useState("Create TopTrump");
+
   const [selectedSkillsList, setSelectedSkillsList] = useState<SkillItem[]>([]);
+
+  const [displayTopTrump, setDisplayTopTrump] = useState(false);
 
   const handleSubmit = () => {
     // Placeholder for form submission logic
@@ -26,32 +31,44 @@ const UserData: React.FC = () => {
     if (!currentClient) {
       setIsCurrentClientInvalid(true);
     }
-    if (fullName && currentClient) {
-      alert(`TopTrump created for ${fullName} at ${currentClient}`);
-    }
+    setDisplayTopTrump(!displayTopTrump);
   };
+
+  useEffect(() => {
+    setButtonText(displayTopTrump ? "Edit TopTrump" : "Create TopTrump");
+  }, [displayTopTrump]);
 
   return (
     <Form aria-label="Top Trump Form">
       <Stack gap={7} style={{ marginBottom: "20px" }}>
-        <UserForm
-          fullName={fullName}
-          setFullName={setFullName}
-          setSelectedSkillList={setSelectedSkillsList}
-          isFullNameInvalid={isFullNameInvalid}
-          setIsFullNameInvalid={setIsFullNameInvalid}
-          currentClient={currentClient}
-          setCurrentClient={setCurrentClient}
-          isCurrentClientInvalid={isCurrentClientInvalid}
-          setIsCurrentClientInvalid={setIsCurrentClientInvalid}
-        />
-        <List
-          title="Selected Skills"
-          headers={sampleHeaders}
-          items={selectedSkillsList}
-          setSelectedSkillsList={setSelectedSkillsList}
-        />
-        <Button onClick={handleSubmit}>Create TopTrump</Button>
+        {!displayTopTrump ? (
+          <>
+            <UserForm
+              fullName={fullName}
+              setFullName={setFullName}
+              setSelectedSkillList={setSelectedSkillsList}
+              isFullNameInvalid={isFullNameInvalid}
+              setIsFullNameInvalid={setIsFullNameInvalid}
+              currentClient={currentClient}
+              setCurrentClient={setCurrentClient}
+              isCurrentClientInvalid={isCurrentClientInvalid}
+              setIsCurrentClientInvalid={setIsCurrentClientInvalid}
+            />
+            <List
+              title="Selected Skills"
+              headers={sampleHeaders}
+              items={selectedSkillsList}
+              setSelectedSkillsList={setSelectedSkillsList}
+            />
+          </>
+        ) : (
+          <TopTrump
+            fullName={fullName}
+            currentClient={currentClient}
+            selectedSkillsList={selectedSkillsList}
+          />
+        )}
+        <Button onClick={handleSubmit}>{buttonText}</Button>
       </Stack>
     </Form>
   );
