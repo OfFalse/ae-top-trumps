@@ -70,6 +70,7 @@ const TopTrumpCard: React.FC<TopTrumpProps> = ({
             {selectedSkillsList.map((skill, i) => (
               <Tag
                 key={i}
+                size="lg"
                 type={proficiencyColorMap[skill.skillLevel] || "gray"}
               >
                 {skill.title}
