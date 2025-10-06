@@ -142,7 +142,7 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
         style={{ display: "flex", flexDirection: "column" }}
       >
         <Button
-          kind="primary"
+          kind="tertiary"
           onClick={() => addSkill(comboValue)}
           // disable the button if comboValue is empty or only whitespace
           disabled={!comboValue.trim()}
