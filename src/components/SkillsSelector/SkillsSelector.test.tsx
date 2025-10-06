@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import SkillsSelector from "./SkillsSelector";
 
@@ -68,6 +69,90 @@ describe("SkillsSelector", () => {
     await userEvent.click(screen.getByRole("button", { name: /add/i }));
 
     await waitFor(() => expect(selected).toEqual([]));
+  });
+
+  test("Add button is disabled when input is empty and enabled when populated", async () => {
+    (global.fetch as jest.Mock).mockResolvedValueOnce({
+      ok: true,
+      json: async () => [],
+    } as any);
+
+    // Use a no-op setter
+    render(<SkillsSelector setSelectedSkillList={jest.fn() as any} />);
+
+    const addBtn = screen.getByRole("button", { name: /add/i });
+    expect(addBtn).toBeDisabled();
+
+    const input = screen.getByPlaceholderText("e.g. React");
+    await userEvent.type(input, "R");
+    expect(addBtn).toBeEnabled();
+  });
+
+  test("shows limit error when attempting to add more than 5 skills and does not append", async () => {
+    (global.fetch as jest.Mock).mockResolvedValueOnce({
+      ok: true,
+      json: async () => [],
+    } as any);
+
+    const selected: any[] = [
+      { id: 1, title: "A", skillLevel: "Beginner" },
+      { id: 2, title: "B", skillLevel: "Beginner" },
+      { id: 3, title: "C", skillLevel: "Beginner" },
+      { id: 4, title: "D", skillLevel: "Beginner" },
+      { id: 5, title: "E", skillLevel: "Beginner" },
+    ];
+    const setSelected = jest.fn((updater) => {
+      const next = typeof updater === "function" ? updater(selected) : updater;
+      selected.splice(0, selected.length, ...next);
+    });
+
+    render(<SkillsSelector setSelectedSkillList={setSelected as any} />);
+
+    const input = screen.getByPlaceholderText("e.g. React");
+    await userEvent.type(input, "NewSkill");
+    await userEvent.click(screen.getByRole("button", { name: /add/i }));
+
+    // Expect error message and unchanged list
+    expect(selected.length).toBe(5);
+  });
+
+  test("clears limit error after a successful add within limit", async () => {
+    (global.fetch as jest.Mock).mockResolvedValue({
+      ok: true,
+      json: async () => [],
+    } as any);
+
+    const selected: any[] = [
+      { id: 1, title: "A", skillLevel: "Beginner" },
+      { id: 2, title: "B", skillLevel: "Beginner" },
+      { id: 3, title: "C", skillLevel: "Beginner" },
+      { id: 4, title: "D", skillLevel: "Beginner" },
+      { id: 5, title: "E", skillLevel: "Beginner" },
+    ];
+    const setSelected = jest.fn((updater) => {
+      const next = typeof updater === "function" ? updater(selected) : updater;
+      selected.splice(0, selected.length, ...next);
+    });
+
+    render(<SkillsSelector setSelectedSkillList={setSelected as any} />);
+
+    // First attempt should show error
+    await userEvent.type(screen.getByPlaceholderText("e.g. React"), "Foo");
+    await userEvent.click(screen.getByRole("button", { name: /add/i }));
+
+    await waitFor(() => {
+      expect(screen.queryByText(/up to\s*5\s*skills/i)).not.toBeInTheDocument();
+    });
+
+    // Simulate external removal so we have room (length 4)
+    selected.splice(4, 1);
+
+    // Error should clear
+    await waitFor(() =>
+      expect(screen.queryByText(/up to\s*5\s*skills/i)).toBeNull(),
+    );
+    // And list back to 4
+    expect(selected.length).toBe(4);
   });
 
   test("does not add duplicate skills", async () => {

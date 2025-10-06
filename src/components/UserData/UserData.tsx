@@ -10,7 +10,13 @@ const sampleHeaders = [
   { key: "actions", header: "Actions" },
 ];
 
+// Consider converting userdata to context if it grows more complex
+// For now, keep state local to this component
+// Will prevent prop drilling as app scales
+
 const UserData: React.FC = () => {
+  // State management for form inputs and display control
+  // Enables toggling between form view and TopTrump display
   const [fullName, setFullName] = useState("");
   const [isFullNameInvalid, setIsFullNameInvalid] = useState(false);
 
@@ -27,14 +33,17 @@ const UserData: React.FC = () => {
     // Placeholder for form submission logic
     if (!fullName) {
       setIsFullNameInvalid(true);
+      return;
     }
     if (!currentClient) {
       setIsCurrentClientInvalid(true);
+      return;
     }
     setDisplayTopTrump(!displayTopTrump);
   };
 
   useEffect(() => {
+    // Change button text based on whether TopTrump is displayed
     setButtonText(displayTopTrump ? "Edit TopTrump" : "Create TopTrump");
   }, [displayTopTrump]);
 

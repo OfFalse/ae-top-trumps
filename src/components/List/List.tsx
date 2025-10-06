@@ -27,10 +27,13 @@ const List: React.FC<ListProps> = ({
   items,
   setSelectedSkillsList,
 }) => {
+  // Local state to manage list items
+  // Syncs with parent component's selected skills
   const [listItems, setListItems] = useState(items || []);
 
   const handleRemove = (e: React.MouseEvent<HTMLAnchorElement>, id: number) => {
     e.preventDefault();
+    // Remove item from parent state
     setSelectedSkillsList((prevSkills) =>
       prevSkills.filter((skill) => skill.id !== id),
     );
