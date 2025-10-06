@@ -33,10 +33,11 @@ const UserData: React.FC = () => {
     // Placeholder for form submission logic
     if (!fullName) {
       setIsFullNameInvalid(true);
-      return;
     }
     if (!currentClient) {
       setIsCurrentClientInvalid(true);
+    }
+    if (!fullName || !currentClient) {
       return;
     }
     setDisplayTopTrump(!displayTopTrump);

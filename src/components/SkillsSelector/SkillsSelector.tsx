@@ -11,6 +11,7 @@ import { SkillItem } from "../List/List";
 import useDebounce from "../../hooks/useDebounce";
 import "./SkillsSelector.scss";
 import {
+  API_ERROR_TEXT,
   SKILL_LEVELS,
   SKILL_LIMIT,
   SKILL_LIMIT_ERROR_TEXT,
@@ -36,6 +37,7 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
   const [skillList, setSkillList] = useState<string[]>([]);
   const [selectedLevel, setSelectedLevel] = useState<string>("Beginner");
   const [skillLimitError, setSkillLimitError] = useState(false);
+  const [apiError, setApiError] = useState(false);
 
   const addSkill = (name: string | null | undefined) => {
     const selectedItem = (name ?? "").trim();
@@ -72,28 +74,33 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
       setSkillList([]);
       return;
     }
-    try {
-      const headers: Record<string, string> = {};
-      if (API_KEY) headers.apikey = API_KEY;
-      const response = await fetch(
-        `${API_BASE}/skills?q=${encodeURIComponent(query)}`,
-        {
-          method: "GET",
-          headers,
-        },
-      );
-      if (!response || !("ok" in response) || !response.ok) {
-        setSkillList([]);
-        return;
-      }
-      let result: unknown = [];
+    if (!apiError) {
       try {
-        result = await response.json();
-      } catch {
-        result = [];
+        const headers: Record<string, string> = {};
+        if (API_KEY) headers.apikey = API_KEY;
+        const response = await fetch(
+          `${API_BASE}/skills?q=${encodeURIComponent(query)}`,
+          {
+            method: "GET",
+            headers,
+          },
+        );
+        if (!response || !("ok" in response) || !response.ok) {
+          setSkillList([]);
+          return;
+        }
+        let result: unknown = [];
+        try {
+          result = await response.json();
+        } catch {
+          result = [];
+        }
+        setSkillList(Array.isArray(result) ? (result as string[]) : []);
+      } catch (e) {
+        setApiError(true);
+        setSkillList([]);
       }
-      setSkillList(Array.isArray(result) ? (result as string[]) : []);
-    } catch (e) {
+    } else {
       setSkillList([]);
     }
   };
@@ -151,8 +158,16 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
           Add
         </Button>
       </Column>
+
+      {apiError && (
+        <Column lg={8} md={6}>
+          <div className="error_message">{API_ERROR_TEXT}</div>
+        </Column>
+      )}
       {skillLimitError && (
-        <div className="error_message">{SKILL_LIMIT_ERROR_TEXT}</div>
+        <Column lg={8} md={6}>
+          <div className="error_message">{SKILL_LIMIT_ERROR_TEXT}</div>
+        </Column>
       )}
     </Grid>
   );
