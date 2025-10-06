@@ -6,7 +6,7 @@ import {
   Column,
   Grid,
 } from "@carbon/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { SkillItem } from "../List/List";
 import useDebounce from "../../hooks/useDebounce";
 import "./SkillsSelector.scss";
@@ -38,6 +38,14 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
   const [selectedLevel, setSelectedLevel] = useState<string>("Beginner");
   const [skillLimitError, setSkillLimitError] = useState(false);
   const [apiError, setApiError] = useState(false);
+
+  // Ensure typed value persists by including it as an item when not present
+  const displayItems = useMemo(() => {
+    if (!comboValue) return skillList;
+    return skillList.includes(comboValue)
+      ? skillList
+      : [comboValue, ...skillList];
+  }, [comboValue, skillList]);
 
   const addSkill = (name: string | null | undefined) => {
     const selectedItem = (name ?? "").trim();
@@ -116,9 +124,12 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
       <Column sm={4} md={6} lg={4}>
         <ComboBox
           id={"skills-combo"}
-          items={skillList}
-          // onChange is required but we handle input changes via onInputChange
-          onChange={() => {}}
+          items={displayItems}
+          // Control the input so typed text persists on blur
+          selectedItem={comboValue}
+          onChange={({ selectedItem }) =>
+            setComboValue((selectedItem as string) ?? "")
+          }
           aria-activedescendant="skills-combo"
           onInputChange={(val: any) => {
             const value =
@@ -126,6 +137,7 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
             setComboValue(value);
           }}
           titleText="Skills"
+          itemToString={(item: string | null | undefined) => item ?? ""}
           shouldFilterItem={() => true}
           placeholder="e.g. React"
           invalid={skillLimitError}

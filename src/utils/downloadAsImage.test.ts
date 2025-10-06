@@ -93,8 +93,6 @@ describe("downloadAsImage", () => {
       useCORS: true,
       allowTaint: true,
       backgroundColor: "#f4f4f4",
-      height: 250,
-      width: 200,
     });
   });
 
