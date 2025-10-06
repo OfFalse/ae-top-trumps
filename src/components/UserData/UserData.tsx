@@ -39,6 +39,9 @@ const UserData: React.FC = () => {
       setIsCurrentClientInvalid(true);
       return;
     }
+    if (!fullName || !currentClient) {
+      return;
+    }
     setDisplayTopTrump(!displayTopTrump);
   };
 
