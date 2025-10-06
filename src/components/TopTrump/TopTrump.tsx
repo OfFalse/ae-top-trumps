@@ -14,6 +14,7 @@ interface TopTrumpProps {
 }
 
 const proficiencyColorMap: {
+  // Map skill levels to tag colors using strings
   [key: string]: "purple" | "blue" | "green" | "gray";
 } = {
   Expert: "purple",
@@ -26,6 +27,7 @@ const TopTrumpCard: React.FC<TopTrumpProps> = ({
   fullName,
   currentClient,
   selectedSkillsList = [],
+  // Future enhancement: allow user-uploaded
   avatar = "",
 }) => {
   const contentRef = React.useRef<HTMLDivElement>(null);
@@ -46,6 +48,7 @@ const TopTrumpCard: React.FC<TopTrumpProps> = ({
       <Tile className="top-trump-card" ref={contentRef}>
         <div className="card-header">
           <div className="card-avatar" data-testid="card-avatar">
+            {/* Extended scope allows user to upload profile picture */}
             {avatar ? (
               <img src={avatar} alt={`${fullName}'s avatar`} />
             ) : (

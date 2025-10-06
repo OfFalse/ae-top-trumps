@@ -28,6 +28,8 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
   const API_BASE =
     process.env.REACT_APP_SKILLS_API_BASE || "https://api.apilayer.com";
   const API_KEY = process.env.REACT_APP_SKILLS_API_KEY;
+
+  // Search term state with debounce for API calls - wait 500ms after user stops typing to prevent excessive calls
   const [comboValue, setComboValue] = useState("");
   const debouncedSearchTerm = useDebounce(comboValue, 500);
 
@@ -61,9 +63,6 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
   const handleLevelChange = ({ selectedItem }: OnChangeData<string>) => {
     setSkillLimitError(false);
     setSelectedLevel((selectedItem as string) || "Beginner");
-  };
-  const handleSkillChange = (data: OnChangeData<string | null | undefined>) => {
-    return;
   };
 
   const fetchSkills = async (input: string) => {
@@ -106,11 +105,13 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
 
   return (
     <Grid>
+      {/* Use Columns for reactivity */}
       <Column sm={4} md={6} lg={4}>
         <ComboBox
           id={"skills-combo"}
           items={skillList}
-          onChange={handleSkillChange}
+          // onChange is required but we handle input changes via onInputChange
+          onChange={() => {}}
           aria-activedescendant="skills-combo"
           onInputChange={(val: any) => {
             const value =
