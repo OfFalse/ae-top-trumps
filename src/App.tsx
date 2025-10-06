@@ -23,7 +23,7 @@ function App() {
             md={{ span: 6, offset: 1 }}
             lg={{ span: 8, offset: 4 }}
           >
-            {/* Single page app requires no routing - display only TopTrump interactivity */}
+            {/* Single page app requires no routing - display only TopTrump form and tile */}
             <UserData />
           </Column>
         </Grid>

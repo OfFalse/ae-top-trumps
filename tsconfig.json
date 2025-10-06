@@ -16,6 +16,7 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  // define scope for ts checks
   "include": ["src", "src/index.tsx"],
   "exclude": ["node_modules", "src/**/*.test.ts", "src/**/*.test.tsx"]
 }
