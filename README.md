@@ -43,7 +43,7 @@ Choosing an established design system like Carbon instead of building components
 
 The following requirements were defined in consultation with stakeholders and prioritised using the MoSCoW methodology (assumed complete).
 
-# MoSCoW Prioritization
+### MoSCoW Prioritization
 
 A method for categorizing requirements to manage stakeholder expectations and prioritize work. The definitions used are as follows:
 
@@ -104,3 +104,34 @@ The following user stories capture the core goals and benefits for the primary u
 
 5. **Profile Export (NFR)**
    _As a_ user, _I want_ a dedicated option to download the final generated Top Trump card as an image (PNG or PDF), _so that_ I can easily share, print, or use the card in other documentation. |
+
+## Project Stakeholders
+
+As this is a solo endeavour, I will oversee the product, including the vision and scope definition, delivery, ensuring adherence to timelines, activity tracking on a KanBan board, and development tasks, including all build, testing, and deployment activities related to this product.
+
+## Project Risks
+
+To ensure project risks are factored into the development process, I created a risk matrix which covers potential risks, their likelihoods, impacts, and mitigation strategies. This enabled me to be more proactive in tackling risks and avoiding serious issues within the development process.
+
+| **Risk**                       | **Likelihood** | **Impact** | **Priority** | **Mitigation Strategy**                                                              |
+| ------------------------------ | -------------- | ---------- | ------------ | ------------------------------------------------------------------------------------ |
+| **API for Skills Unavailable** | Medium         | High       | Critical     | - Implement a fallback mechanism allowing users to input custom skills in the field. |
+| **Github CI/CD Support**       | Low            | High       | High         | - 2000 minutes of free support and upgrades can be purchased                         |
+|                                |                |            |              | - Assign CI/CD pipelines to run only on main branch merges.                          |
+| **Scope Creep**                | Medium         | Medium     | Medium       | - Define MVP project scope and apply MoSCoW.                                         |
+|                                |                |            |              | - Define extended scope and address upon MVP completion if timeframe permits.        |
+
+## Project Management 👩‍💼
+
+### Project Management Tool 🔧
+
+I used GitHub Projects, integrated with my repository, to set up a KanBan board featuring five key sections.
+
+- Backlog - Tasks that have been documented and are ready for development to commence.
+- In-Progress - Tasks currently being worked on but not yet finished.
+- Done- Completed and merged tasks into main branch.
+- Not required - To help identify redundancies in tickets or tickets who's scope has been addressed elsewhere.
+
+Other sections, such as "Ready" and "Review", have been omitted from this list as it is a solo endeavour and does not require external validation.
+
+![Github Projects Kanban Board](./assets/AE-Kanban.png)
