@@ -1,13 +1,16 @@
 @use "@carbon/react/scss/spacing" as *;
 @use "@carbon/react/scss/theme" as *;
 @use "@carbon/react/scss/type" as *;
+@use "@carbon/react/scss/breakpoint" as bp;
 
 .top-trump-card {
-  width: 100%; /* Fill the container by default */
-  min-width: 26rem;
-  max-width: 35rem;
-  min-height: 40rem;
-  max-height: 48rem;
+  width: 100%; /* Fill the grid column by default */
+  /* Let the grid control width; avoid fixed min/max that can break responsiveness */
+  min-width: 0;
+  max-width: none;
+  /* Mobile-first height: let content size naturally */
+  min-height: auto;
+  max-height: none;
   border-top: 4px solid var(--cds-interactive);
   background-color: var(--cds-layer);
   border: 1px solid var(--cds-border-subtle);
@@ -17,16 +20,42 @@
     0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
+/* From md and up, add some vertical structure if needed */
+@include bp.breakpoint("md") {
+  .top-trump-card {
+    min-height: 36rem;
+  }
+}
+
+/* From lg and up, restore original intended vertical sizing while still filling the grid column */
+@include bp.breakpoint("lg") {
+  .top-trump-card {
+    min-height: 40rem;
+    max-height: 48rem;
+  }
+}
+
 .card-header {
   display: flex;
+  /* Mobile-first: stack */
+  flex-direction: column;
   align-items: center;
   gap: $spacing-05;
   padding-bottom: $spacing-05;
 }
 
+@include bp.breakpoint("md") {
+  .card-header {
+    /* Row layout from md and up */
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
 .card-avatar {
-  width: 200px;
-  height: 200px;
+  /* Responsive avatar: scales on small screens up to 200px */
+  width: clamp(96px, 25vw, 200px);
+  height: clamp(96px, 25vw, 200px);
   border-radius: 50%;
   background-color: var(--cds-layer-hover);
   display: flex;
@@ -62,5 +91,22 @@
 .cards-container {
   display: grid;
   gap: 1.5rem;
-  justify-content: center;
+  /* Single column by default inside the grid column */
+  grid-template-columns: 1fr;
+  /* Avoid centering gaps causing odd alignment; the grid column already centers via Carbon Grid */
+  justify-content: stretch;
+}
+
+@include bp.breakpoint("md") {
+  .cards-container {
+    /* Two cards per row on medium screens within the grid column */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@include bp.breakpoint("lg") {
+  .cards-container {
+    /* Three cards per row on large screens within the grid column */
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
