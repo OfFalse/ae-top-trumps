@@ -121,9 +121,9 @@ To ensure project risks are factored into the development process, I created a r
 | **Scope Creep**                | Medium         | Medium     | Medium       | - Define MVP project scope and apply MoSCoW.                                         |
 |                                |                |            |              | - Define extended scope and address upon MVP completion if timeframe permits.        |
 
-## Project Management 👩‍💼
+## Project Management
 
-### Project Management Tool 🔧
+### Project Organisation Tool
 
 I used GitHub Projects, integrated with my repository, to set up a KanBan board featuring five key sections.
 
@@ -144,9 +144,9 @@ The screenshot below shows an example of the blank "feature" template, prior to 
 
 ![Ticket template with acceptance criteria and definition of done](./assets/Ticket%20Template.png)
 
-Using custom created labels within GitHub, I gave each ticket/issue its own size based on an estimate of the effort required to complete the work, quantity of unknowns involved, as well as the estimated length of time involved to complete the ticket. I decided to utilise fibonacci sequence sizes for my tickets, as this is a simple and repeatable way of assigning effort to tickets which focusses on effort/complexity rather than time. In addition to this, I believe that the increasing gaps between sizes reflects the growing complexities and unknowns as you move up the scale better than that provided by t-shirt sizes which simply utilise XS, S, M, L etc.
+Using custom labels in GitHub, I assigned each ticket or issue a size based on the estimated effort, number of unknowns, and expected completion time. I opted for Fibonacci sequence sizes because this method is simple, consistent, and emphasises effort and complexity over time. I also believe that the larger gaps between Fibonacci sizes better represent the increasing complexities and unknowns as you move up the scale than other well-regarded approaches
 
-![ticket sizing using labels in Github](./assets/Size_labels.png)
+![ticket sizing using labels in Github](./assets/Labels.png)
 
 To ensure sizing was as effective as possible, it was important to make sure tasks were sized consistently, to do this, I used the below guide to accurately size each ticket based on the existing system as well as my current knowledge, skills and understanding.
 
@@ -156,3 +156,45 @@ To ensure sizing was as effective as possible, it was important to make sure tas
 - 5 - Larger or more complex tasks, involving multiple steps or uncertainties.
 - 8 - Highly complex with significant uncertainty; these may involve architectural changes. Consider breaking them down into smaller tickets.
 - 13 - This ticket is too large and should be divided into smaller tasks.
+
+## Product Design
+
+## Wireframes
+
+## Process Flow
+
+## Error Handling and Validation
+
+## Development
+
+### Activity timeline
+
+### CI/CD Timelime
+
+### Test-Driven Development
+
+## Analysis and Reflection
+
+## Final Product: Desktop and Mobile view
+
+Screenshots of the final product are available below, as well as a link to the deployed service which can be found at: https://offalse.github.io/ae-top-trumps/
+
+### Desktop View
+
+![desktop view](./assets/AE-Desktop.jpg)
+
+### Mobile View
+
+![Mobile View](./assets/AE-Mobile.jpg)
+
+## Future Extensibility
+
+- Database persistence
+- UI Database synchronisation and session management
+- Richer data fields
+  - Availability
+  - Cost
+- User Database
+- UI comparision
+- Customisable views
+- RolexSkill filtering
