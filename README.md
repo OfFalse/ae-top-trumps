@@ -4,6 +4,14 @@ The main goal of this project is to create a highly accessible and efficient cli
 
 ---
 
+## Project Roadmap and Scope Definition
+
+The project adhered to a rigorous timeline, prioritising both core functionality and Non-Functional Requirements (NFRs).
+
+The project scope is strictly defined as a **UI-only application**. The focus is placed intensely on client-side state management, input validation, component rendering, and rigorous NFR compliance. Backend integration is limited to demonstrating readiness via a **mocked API call** for the skill list. Crucially, the application is **stateless**, meaning data is not persisted after the browser session.
+
+## ![project_plan_drawio](./assets/AE-Wireframe-Project%20Plan.drawio.png)
+
 ## Business Justification and Strategic Value
 
 In a fast-paced **consultancy environment**, the ability to quickly assemble effective project teams is a vital competitive advantage. Resourcing managers, responsible for assigning candidates to roles, and bid teams constantly face the challenge of evaluating numerous candidates to find the ideal fit for client engagements. Traditional methods, such as manually sifting through CVs or complex spreadsheets, are time-consuming and prone to inconsistency. This project addresses this inefficiency by developing a tool for instant, standardised skills visualisation.
