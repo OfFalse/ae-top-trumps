@@ -39,7 +39,7 @@ const TopTrumpCard: React.FC<TopTrumpProps> = ({
   };
 
   return (
-    <div className="cards-container">
+    <>
       <Download
         onClick={handleDownload}
         size={32}
@@ -79,7 +79,7 @@ const TopTrumpCard: React.FC<TopTrumpProps> = ({
           </div>
         </div>
       </Tile>
-    </div>
+    </>
   );
 };
 
