@@ -135,3 +135,24 @@ I used GitHub Projects, integrated with my repository, to set up a KanBan board 
 Other sections, such as "Ready" and "Review", have been omitted from this list as it is a solo endeavour and does not require external validation.
 
 ![Github Projects Kanban Board](./assets/AE-Kanban.png)
+
+### Ticket Templating and Sizing
+
+One of the initial stages of the project involved setting up ticket templates. These templates ensured tickets were created with a consistent format and information by pre-filling specific questions or headings each time a new ticket was made. To make these templates as relevant as possible, I created a single template for all types of issues, called “feature,” as the structure could be applied universally.
+
+The screenshot below shows an example of the blank "feature" template, prior to filling in the details. The template includes four main sections: Title, Definition of Done and Acceptance Criteria. These predefined fields reduce the time needed to create detailed tickets, streamline the process, and minimise the risk of missing important information by prompting the author to provide concise and specific information.
+
+![Ticket template with acceptance criteria and definition of done](./assets/Ticket%20Template.png)
+
+Using custom created labels within GitHub, I gave each ticket/issue its own size based on an estimate of the effort required to complete the work, quantity of unknowns involved, as well as the estimated length of time involved to complete the ticket. I decided to utilise fibonacci sequence sizes for my tickets, as this is a simple and repeatable way of assigning effort to tickets which focusses on effort/complexity rather than time. In addition to this, I believe that the increasing gaps between sizes reflects the growing complexities and unknowns as you move up the scale better than that provided by t-shirt sizes which simply utilise XS, S, M, L etc.
+
+![ticket sizing using labels in Github](./assets/Size_labels.png)
+
+To ensure sizing was as effective as possible, it was important to make sure tasks were sized consistently, to do this, I used the below guide to accurately size each ticket based on the existing system as well as my current knowledge, skills and understanding.
+
+- 0 - Very simple tasks that are well understood and require little to no effort.
+- 1 - Small tasks that are simple, without unknowns, but will take a short time to implement.
+- 3 - Moderately complex tasks. May involve some uncertainties but are generally straightforward.
+- 5 - Larger or more complex tasks, involving multiple steps or uncertainties.
+- 8 - Highly complex with significant uncertainty; these may involve architectural changes. Consider breaking them down into smaller tickets.
+- 13 - This ticket is too large and should be divided into smaller tasks.
