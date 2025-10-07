@@ -6,9 +6,9 @@ The main goal of this project is to create a highly accessible and efficient cli
 
 ## Project Roadmap and Scope Definition
 
-The project adhered to a rigorous timeline, prioritising both core functionality and Non-Functional Requirements (NFRs).
+The project adhered to a timeline, prioritising both core functionality and several Non-Functional Requirements (NFRs).
 
-The project scope is strictly defined as a **UI-only application**. The focus is placed intensely on client-side state management, input validation, component rendering, and rigorous NFR compliance. Backend integration is limited to demonstrating readiness via a **mocked API call** for the skill list. Crucially, the application is **stateless**, meaning data is not persisted after the browser session.
+The project scope is strictly defined as a **UI-only application**. The focus is placed intensely on client-side state management, input validation, component rendering, and rigorous NFR compliance. Backend integration is limited to fetching industry standard skill labels via an **API call** for the skill list. Crucially, the application is **stateless**, meaning data is not persisted after the browser session.
 
 ## ![project_plan_drawio](./assets/AE-Wireframe-Project%20Plan.drawio.png)
 
@@ -16,7 +16,7 @@ The project scope is strictly defined as a **UI-only application**. The focus is
 
 In a fast-paced **consultancy environment**, the ability to quickly assemble effective project teams is a vital competitive advantage. Resourcing managers, responsible for assigning candidates to roles, and bid teams constantly face the challenge of evaluating numerous candidates to find the ideal fit for client engagements. Traditional methods, such as manually sifting through CVs or complex spreadsheets, are time-consuming and prone to inconsistency. This project addresses this inefficiency by developing a tool for instant, standardised skills visualisation.
 
-The core business driver is the need for **rapid evaluation**. Resourcers must assess a consultant's core competencies **at a glance**. By distilling a profile down to five key skills in a clear, visual format, the Top Trump Generator enables quick comparisons. The skills list must be based on **industry standards** to align internal descriptions with client terminology in RFPs and project briefs, streamlining bidding and enhancing professionalism.
+The core business driver is the need for **rapid evaluation**. Resourcers must assess a consultant's core competencies **at a glance**. By distilling a profile down to five key skills in a clear, visual format, the Top Trump Generator enables quick comparisons. The skills list must be based on **industry standards** to align internal descriptions with client terminology in Request for Proposals and project briefs, streamlining bidding and enhancing professional engagements.
 
 ### Gamification: The Top Trump Format
 
@@ -33,8 +33,46 @@ The choice of a "Top Trump" format is a deliberate strategy to utilise the princ
 
 The development leverages a modern technology stack, utilising **React with TypeScript** for robust code architecture and integration with the **Carbon Design System (CDS)** to ensure enterprise-grade accessibility and responsiveness. The selection of this stack was a strategic decision aimed at maximising performance, scalability, and development speed.
 
-**TypeScript** on top of React introduces static typing, which is critical for building a robust and reliable application. It catches potential errors during the development phase, not in production, leading to higher code quality and easier collaboration among developers—a non-negotiable for critical business tools.
+**TypeScript** on top of React introduces static typing, which is critical for building a robust and reliable application. It catches potential errors during the development phase, not in production, leading to higher code quality and productivity and elevates the systems robustness which is non-negotiable for critical business tools.
 
 ### Carbon Design System (CDS)
 
-Choosing an established design system like Carbon instead of building components from scratch or using a more generic library like Bootstrap was crucial for creating a professional and accessible user interface rapidly. CDS is specifically designed for enterprise applications, providing a comprehensive set of pre-built, WCAG-compliant components. This ensures that the tool is not only visually consistent and professional but also usable by all employees, regardless of their abilities. These pre-built features saved hundreds of hours of development that would have otherwise been spent on designing, building, and testing customised UI elements, allowing the project to focus on its core business logic.
+Choosing an established design system like Carbon instead of building components from scratch or using a more generic library like Bootstrap was crucial for creating a professional and accessible user interface rapidly. CDS is specifically designed for enterprise applications, providing a comprehensive set of pre-built, **WCAG-compliant** components. This ensures that the tool is not only visually consistent and professional but also usable by all employees, regardless of their abilities. These pre-built features saved hundreds of hours of development that would have otherwise been spent on designing, building, and testing customised UI elements, allowing the project to focus on its core business logic.
+
+## Project Requirements
+
+The following requirements were defined in consultation with stakeholders and prioritised using the MoSCoW methodology (assumed complete).
+
+![MoSCoW_functional_requirements](./assets/AE-Wireframe-MoSCoW.jpg)
+
+### 1. Functional Requirements: User Interface (UI)
+
+| Requirement                    | Implementation Detail (Carbon Design System)                                                                                     | Priority (MoSCoW) |
+| :----------------------------- | :------------------------------------------------------------------------------------------------------------------------------- | :---------------- |
+| **User Identification Inputs** | **CDS TextInput** components for **Full Name** and **Client** identification.                                                    | Must Have         |
+| **Skill Selection Interface**  | **CDS ComboBox** for selecting skills (from mock API data) and a corresponding **CDS Dropdown** for proficiency level selection. | Must Have         |
+| **Dynamic Skill List**         | A visible, dynamic list that appends selected skills/levels, strictly limited to **five items**.                                 | Must Have         |
+| **Card Generation Trigger**    | A primary **CDS Button** labelled "Generate Top Trump" to initiate the final output rendering.                                   | Must Have         |
+| **Profile Display**            | Displays the generated card, including a **CDS Avatar**, Full Name, Client, and skills rendered as color-coded **CDS Tags**.     | Must Have         |
+| **Profile Picture**            | A fiel upload that accepts images as **.jpg, .png, and .svg** that is displayed in place of the **CDS Avatar** when provided.    | Could Have        |
+
+### 2. Functional Requirements: Logic and Data
+
+| Requirement                             | Implementation Detail                                                                                                                          | Priority (MoSCoW) |
+| :-------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- | :---------------- |
+| **Skill Level Colour Logic**            | Logic to map proficiency levels to specific colours for the CDS Tags: **Expert: purple, Advanced: blue, Intermediate: green, Beginner: grey**. | Should Have       |
+| **Input Validation**                    | Client-side validation to ensure text fields (**Full Name, Client**) are non-empty.                                                            | Must Have         |
+| **Skill Limit Validation**              | Logic to enforce the **maximum of 5 skills**, displaying a custom inline error message upon attempted overflow.                                | Should Have       |
+| **Skill List Source**                   | Skill data for the ComboBox is sourced via an **API call** integration with industry standard skills API.                                      | Should Have       |
+| **Authentication / Sign In**            | **None required**.                                                                                                                             | Won't Have        |
+| **UI State Persistence**                | **None required**.                                                                                                                             | Won't Have        |
+| **Backend API or Database Persistence** | **None required**.                                                                                                                             | Won't Have        |
+
+### 3. Non-functional Requirements (NFRs)
+
+| Requirement                  | Measurement and Tooling                                                                                                                | Priority (MoSCoW) |
+| :--------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :---------------- |
+| **Accessibility Compliance** | Audit compliance using **WAVE, Arc Toolkit, and axeDevTools reports**. Preliminary audit via **Google Lighthouse**.                    | Must Have         |
+| **Performance**              | Generation process under **1 second** perceived response time. Measured via **Google Lighthouse** performance score (Target: 100/100). | Should Have       |
+| **Responsive Design**        | Application must be usable on both desktop and mobile devices.                                                                         | Should Have       |
+| **Downloadable Output**      | The final Top Trump card must be exportable (e.g., as a PNG or PDF).                                                                   | Must Have         |
