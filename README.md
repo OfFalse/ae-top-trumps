@@ -43,6 +43,15 @@ Choosing an established design system like Carbon instead of building components
 
 The following requirements were defined in consultation with stakeholders and prioritised using the MoSCoW methodology (assumed complete).
 
+# MoSCoW Prioritization
+
+A method for categorizing requirements to manage stakeholder expectations and prioritize work. The definitions used are as follows:
+
+- **Must-have:**: Non-negotiable requirements. The release is a failure without them.
+- **Should-have:** Important but not vital. Adds significant value.
+- **Could-have:** Desirable "nice-to-have" items with a smaller impact.
+- **Won't-have (this time):** Explicitly out of scope for the current timeframe.
+
 ![MoSCoW_functional_requirements](./assets/AE-Wireframe-MoSCoW.jpg)
 
 ### 1. Functional Requirements: User Interface (UI)
@@ -60,8 +69,8 @@ The following requirements were defined in consultation with stakeholders and pr
 
 | Requirement                             | Implementation Detail                                                                                                                          | Priority (MoSCoW) |
 | :-------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- | :---------------- |
-| **Skill Level Colour Logic**            | Logic to map proficiency levels to specific colours for the CDS Tags: **Expert: purple, Advanced: blue, Intermediate: green, Beginner: grey**. | Should Have       |
 | **Input Validation**                    | Client-side validation to ensure text fields (**Full Name, Client**) are non-empty.                                                            | Must Have         |
+| **Skill Level Colour Logic**            | Logic to map proficiency levels to specific colours for the CDS Tags: **Expert: purple, Advanced: blue, Intermediate: green, Beginner: grey**. | Should Have       |
 | **Skill Limit Validation**              | Logic to enforce the **maximum of 5 skills**, displaying a custom inline error message upon attempted overflow.                                | Should Have       |
 | **Skill List Source**                   | Skill data for the ComboBox is sourced via an **API call** integration with industry standard skills API.                                      | Should Have       |
 | **Authentication / Sign In**            | **None required**.                                                                                                                             | Won't Have        |
@@ -72,7 +81,26 @@ The following requirements were defined in consultation with stakeholders and pr
 
 | Requirement                  | Measurement and Tooling                                                                                                                | Priority (MoSCoW) |
 | :--------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :---------------- |
+| **Downloadable Output**      | The final Top Trump card must be exportable (e.g., as a PNG or PDF).                                                                   | Must Have         |
 | **Accessibility Compliance** | Audit compliance using **WAVE, Arc Toolkit, and axeDevTools reports**. Preliminary audit via **Google Lighthouse**.                    | Must Have         |
 | **Performance**              | Generation process under **1 second** perceived response time. Measured via **Google Lighthouse** performance score (Target: 100/100). | Should Have       |
 | **Responsive Design**        | Application must be usable on both desktop and mobile devices.                                                                         | Should Have       |
-| **Downloadable Output**      | The final Top Trump card must be exportable (e.g., as a PNG or PDF).                                                                   | Must Have         |
+
+### 5. User Stories
+
+The following user stories capture the core goals and benefits for the primary user of the Top Trump Profile Generator:
+
+1. **Profile Data Input**
+   _As a_ team member, _I want_ to easily input my Full Name and Client details using standard text fields, _so that_ I can identify the profile being generated.
+
+2. **Skill Selection and Limit Enforcement (Logic)**
+   _As a_ team member, _I want_ to be able to select a maximum of five skills and their corresponding proficiency levels from a standardized list, _so that_ the generated card is focused and accurately reflects my core expertise without being overloaded.
+
+3. **Card Generation and Visual Feedback**
+   _As a_ user, _I want_ to click a button and see the final Top Trump card displayed immediately, with skills color-coded (e.g., 'Expert' as purple),_so that_ I have a fast, clear, and gamified visual summary of my profile.
+
+4. **Accessibility Compliance (NFR)**
+   _As a_ user relying on assistive technologies (like a screen reader), _I want_ the application's forms, buttons, and generated content to be fully accessible and correctly labeled, _so that_ I can use the profile generator effectively and without barriers.
+
+5. **Profile Export (NFR)**
+   _As a_ user, _I want_ a dedicated option to download the final generated Top Trump card as an image (PNG or PDF), _so that_ I can easily share, print, or use the card in other documentation. |
