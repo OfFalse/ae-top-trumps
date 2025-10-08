@@ -161,7 +161,11 @@ To ensure sizing was as effective as possible, it was important to make sure tas
 
 ## Wireframes
 
+![Design wireframes for Desktop](./assets/AE-Wireframe-Wireframe.jpg)
+
 ## Process Flow
+
+![Design process flow](./assets/AE-Wireframe-Activity%20Flow.jpg)
 
 ## Error Handling and Validation
 
@@ -169,7 +173,11 @@ To ensure sizing was as effective as possible, it was important to make sure tas
 
 ### Activity timeline
 
-### CI/CD Timelime
+### CI/CD Pipeline
+
+### Accessibility and Performance Metrics
+
+![Lighthouse scores](./assets/Lighthouse-100.png)
 
 ### Test-Driven Development
 
