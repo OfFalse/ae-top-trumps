@@ -123,20 +123,19 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
       {/* Use Columns for reactivity */}
       <Column sm={4} md={6} lg={4}>
         <ComboBox
-          id={"skills-combo"}
+          titleText="Skill"
+          id="skills-combo"
           items={displayItems}
           // Control the input so typed text persists on blur
           selectedItem={comboValue}
           onChange={({ selectedItem }) =>
             setComboValue((selectedItem as string) ?? "")
           }
-          aria-activedescendant="skills-combo"
           onInputChange={(val: any) => {
             const value =
               typeof val === "string" ? val : (val?.target?.value ?? "");
             setComboValue(value);
           }}
-          titleText="Skills"
           itemToString={(item: string | null | undefined) => item ?? ""}
           shouldFilterItem={() => true}
           placeholder="e.g. React"
@@ -145,13 +144,15 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
       </Column>
       <Column sm={4} md={6} lg={2}>
         <Dropdown
-          label="Working level"
+          label="Skill level"
           id="skill-level"
-          titleText="Skill Level"
+          titleText="Skill level"
           items={SKILL_LEVELS as unknown as string[]}
           selectedItem={selectedLevel}
           onChange={({ selectedItem }) => handleLevelChange({ selectedItem })}
           invalid={skillLimitError}
+          aria-label="Select skill proficiency level"
+          aria-haspopup="listbox"
         />
       </Column>
       <Column

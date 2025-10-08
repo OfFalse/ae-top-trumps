@@ -175,6 +175,8 @@ To ensure sizing was as effective as possible, it was important to make sure tas
 
 ### CI/CD Pipeline
 
+![CI CD Pipeline runs tests, build and deploy phase](./assets/PIPELINE.png)
+
 ### Accessibility and Performance Metrics
 
 ![Lighthouse scores](./assets/Lighthouse-100.png)
@@ -189,7 +191,7 @@ Screenshots of the final product are available below, as well as a link to the d
 
 ### Desktop View
 
-![desktop view](./assets/AE-Desktop.jpg)
+![Desktop view](./assets/AE-Desktop.jpg)
 
 ### Mobile View
 
