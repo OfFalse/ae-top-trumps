@@ -84,7 +84,7 @@ A method for categorising requirements to manage stakeholder expectations and pr
 | **Performance**              | Generation process under **1 second** perceived response time. Measured via **Google Lighthouse** performance score (Target: 100/100). | Should Have       |
 | **Responsive Design**        | Application must be usable on both desktop and mobile devices.                                                                         | Should Have       |
 
-### 5. User Stories
+### User Stories
 
 The following user stories capture the core goals and benefits for the primary user of the Top Trump Profile Generator:
 
@@ -142,13 +142,13 @@ The screenshot below shows an example of the blank "feature" template, prior to 
 
 <img src="./assets/Ticket%20Template.png" alt="Ticket template with acceptance criteria and definition of done" width="1000px">
 
-### Activity Sising
+### Ticket Sizing
 
-Using custom labels in GitHub, I assigned each ticket or issue a sise based on the estimated effort, number of unknowns, and expected completion time. I opted for Fibonacci sequence sises because this method is simple, consistent, and emphasises effort and complexity over time. I also believe that the larger gaps between Fibonacci sises better represent the increasing complexities and unknowns as you move up the scale than other well-regarded approaches
+Using custom labels in GitHub, I assigned each ticket or issue a size based on the estimated effort, number of unknowns, and expected completion time. I opted for Fibonacci sequence sizes because this method is simple, consistent, and emphasises effort and complexity over time. I also believe that the larger gaps between Fibonacci sizes better represent the increasing complexities and unknowns as you move up the scale than other well-regarded approaches
 
 <img src="./assets/Labels.png" alt="ticket sising using labels in Github" width="1000px">
 
-To ensure sising was as effective as possible, it was important to make sure tasks were sised consistently, to do this, I used the below guide to accurately sise each ticket based on the existing system as well as my current knowledge, skills and understanding.
+To ensure sising was as effective as possible, it was important to make sure tasks were sized consistently, to do this, I used the below guide to accurately size each ticket based on the existing system as well as my current knowledge, skills and understanding.
 
 - 0 - Very simple tasks that are well understood and require little to no effort.
 - 1 - Small tasks that are simple, without unknowns, but will take a short time to implement.
@@ -187,9 +187,7 @@ Skills Constraint: The skills section enforces a specific business rule: users m
 
 API Error Display: If an API fetch for industry-standard skills fails, a clear error message will appear in the skills section to alert the user to the failure and any potential impact on the form's functionality.
 
-## Development
-
-### Activity timeline
+## Development Tools
 
 ### Continuous Integration/Continuous Deployment (CI/CD)
 
@@ -208,11 +206,32 @@ The project uses **GitHub Actions** to create a reliable and efficient Continuou
 
 ### Accessibility and Performance Metrics
 
+Achieving a nominal (zero-error) report from automated auditing tools is a critical compliance checkpoint, particularly for interactive elements such as the user data collection form. This project utilised automated testing via WAVE, ARC Toolkit, Axe DevTools, and Lighthouse to ensure the user interface meets the WCAG 2.4 guidelines, which focus on Operable components and effective Navigation and Orientation.
+
 <img src="./assets/AE-Wireframe-Accessibility.jpg" alt="Lighthouse scores and WAVE, axe, and ARC DevTools accessiblity reports" width="1000px">
+
+Nominal results from these tools confirm robust compliance across essential WCAG 2.4 success criteria, ensuring the form is fully keyboard operable and logically navigable. Specifically, the audit results validate adherence to key criteria including SC 2.4.1 (Bypass Blocks), SC 2.4.3 (Focus Order), SC 2.4.4 (Link Purpose), SC 2.4.7 (Focus Visible), and SC 2.4.6 (Headings and Labels).
+
+By passing these automated checks, the form demonstrates foundational accessibility that enables all users, regardless of input method, to understand where they are on the page, navigate between fields, and complete the data submission process efficiently.
 
 ### Test-Driven Development
 
+The Skill List Component, which consumes and displays user skill data using the Carbon Design System table structure, was developed strictly using Test-Driven Development (TDD). This approach ensured that the required functionality—from structural rendering to data presentation—was validated by specific unit tests before implementation was complete, guaranteeing high test coverage and minimal regressions.
+
 <img src="./assets/AE-Wireframe-TDD.jpg" alt="TDD Phased approach to building the list component" width="1000px">
+
+The TDD cycle followed a progressive, three-stage implementation path:
+
+1. Component Shell and List Rendering
+   The initial TDD cycle focused on the fundamental Red (failing test) of rendering. A test was written to verify that the CDS table component's wrapper/container was successfully mounted and visible in the DOM, confirming the foundational structure of the list. The Green phase involved the minimal code necessary to satisfy this test, followed by refactoring to ensure proper state initialisation before proceeding.
+
+2. Header Verification
+   The second stage targeted the component's orientation elements. New tests were established to confirm the presence and correct content of the mandatory column headers. This verified that the CDS table structure correctly rendered the three required header cells: Title, Skill Level, and Actions. Tests failed until the component's template correctly mapped and displayed these specific string values.
+
+3. Item and Action Rendering
+   The final and most critical TDD phase involved testing the data presentation and interactive elements. Generic entries were used to test iteration and data binding to their appropriate table sections.
+
+This methodical TDD sequence ensured the list component was robust, visually accurate, and fully compliant with the expected keyboard navigation and semantic requirements validated in the accessibility reports.
 
 ## Analysis and Reflection
 
