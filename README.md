@@ -173,15 +173,31 @@ To ensure sizing was as effective as possible, it was important to make sure tas
 
 ### Activity timeline
 
-### CI/CD Pipeline
+### Continuous Integration/Continuous Deployment (CI/CD)
+
+The project uses **GitHub Actions** to create a reliable and efficient Continuous Integration/Continuous Deployment (CI/CD) pipeline, guaranteeing code quality and smooth delivery to the production environment hosted on **GitHub Pages**. This automated pipeline consists of three separate stages.
+
+1. **Test**: This stage runs the complete test suite using `npm run test --coverage`. This step is essential for verifying functionality and code robustness, acting as a safeguard to detect potential issues before deployment.
+2. **Build**: In this stage, the production build is generated. It securely retrieves **secret API keys** and the deployment **URL slug** (e.g., for routing or configuration) from **Environment Secrets** and incorporates them into the `npm build` command. This method ensures security by keeping sensitive credentials confidential.
+3. **Deploy**: The final step deploys the fully built application to the live production environment hosted on **GitHub Pages**.
+
+### Optimisation and Security
+
+- **Compute Preservation**: The pipeline is designed to run exclusively on the `main` branch, which is dedicated solely to deployment targets. This intentional choice conserves computing resources by avoiding unnecessary builds on the `develop` branch or feature branches, where work-in-progress is generally merged.
+- **Security and Robustness**: Security is evidenced by utilising **Environment Secrets** to hide sensitive API keys. Robustness in delivery is maintained by enforcing comprehensive testing before every deployment, preventing faulty code from reaching production.
 
 ![CI CD Pipeline runs tests, build and deploy phase](./assets/PIPELINE.png)
 
 ### Accessibility and Performance Metrics
 
 ![Lighthouse scores](./assets/Lighthouse-100.png)
+![WAVE report](./assets/WAVE.png)
+![axeTools report](./assets/axeTools.png)
+![ARC report](./assets/ARC.png)
 
 ### Test-Driven Development
+
+![TDD Phased approach to building the list component](./assets/AE-Wireframe-TDD.jpg)
 
 ## Analysis and Reflection
 
@@ -199,12 +215,23 @@ Screenshots of the final product are available below, as well as a link to the d
 
 ## Future Extensibility
 
-- Database persistence
-- UI Database synchronisation and session management
-- Richer data fields
-  - Availability
-  - Cost
-- User Database
-- UI comparision
-- Customisable views
-- RolexSkill filtering
+### Data Persistence and Architecture
+
+- Transition the application from its current stateless, UI-only design to a persistent, multi-user platform by implementing a **dedicated database** for permanent storage and establishing **UI synchronisation** mechanisms supported by robust **session management** and user **authentication**.
+
+### Profile Data Enrichment
+
+- Expand the core profile model by adding high-value business intelligence fields, including real-time or projected **Availability** and internal resource **Cost** metrics, to support the application's use in project planning and resource allocation.
+
+### User Management and Access
+
+- Integrate a **User Database** to securely handle authentication, manage user ownership of profiles, and implement **authorisation roles** (e.g., Creator, Viewer, Admin) to control access to sensitive data and features.
+
+### Advanced Analytics and UI Features
+
+- Develop advanced interactive features such as **UI comparison** tools that enable users to select and view multiple Top Trump profiles side-by-side for assessing skill, cost, and availability.
+- Introduce user-focused features, including **customisable views** (e.g., theming, layout adjustments) and powerful **Role x Skill filtering** to support complex, detailed queries across the entire profile database.
+
+### Regional Deployment
+
+- Develop a multi-region deployment plan (e.g., Active-Active architecture in NA, EU, and APAC) using a global CDN and local database clusters to ensure optimal performance, low latency, and compliance with regional data sovereignty and regulations (e.g., GDPR).
