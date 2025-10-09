@@ -39,11 +39,11 @@ Choosing an established design system like Carbon instead of building components
 
 ## Project Requirements and User Stories
 
-The following requirements were defined in consultation with stakeholders and prioritised using the MoSCoW methodology (assumed complete).
+The following requirements were defined prioritised using the MoSCoW methodology.
 
-### MoSCoW Prioritization
+### MoSCoW Prioritisation
 
-A method for categorizing requirements to manage stakeholder expectations and prioritize work. The definitions used are as follows:
+A method for categorising requirements to manage stakeholder expectations and prioritise work. The definitions used are as follows:
 
 - **Must-have:**: Non-negotiable requirements. The release is a failure without them.
 - **Should-have:** Important but not vital. Adds significant value.
@@ -61,7 +61,7 @@ A method for categorizing requirements to manage stakeholder expectations and pr
 | **Dynamic Skill List**         | A visible, dynamic list that appends selected skills/levels, strictly limited to **five items**.                                 | Must Have         |
 | **Card Generation Trigger**    | A primary **CDS Button** labelled "Generate Top Trump" to initiate the final output rendering.                                   | Must Have         |
 | **Profile Display**            | Displays the generated card, including a **CDS Avatar**, Full Name, Client, and skills rendered as color-coded **CDS Tags**.     | Must Have         |
-| **Profile Picture**            | A fiel upload that accepts images as **.jpg, .png, and .svg** that is displayed in place of the **CDS Avatar** when provided.    | Could Have        |
+| **Profile Picture**            | A file upload that accepts images as **.jpg, .png, and .svg** that is displayed in place of the **CDS Avatar** when provided.    | Could Have        |
 
 ### 2. Functional Requirements: Logic and Data
 
@@ -92,7 +92,7 @@ The following user stories capture the core goals and benefits for the primary u
    _As a_ team member, _I want_ to easily input my Full Name and Client details using standard text fields, _so that_ I can identify the profile being generated.
 
 2. **Skill Selection and Limit Enforcement (Logic)**
-   _As a_ team member, _I want_ to be able to select a maximum of five skills and their corresponding proficiency levels from a standardized list, _so that_ the generated card is focused and accurately reflects my core expertise without being overloaded.
+   _As a_ team member, _I want_ to be able to select a maximum of five skills and their corresponding proficiency levels from a standardised list, _so that_ the generated card is focused and accurately reflects my core expertise without being overloaded.
 
 3. **Card Generation and Visual Feedback**
    _As a_ user, _I want_ to click a button and see the final Top Trump card displayed immediately, with skills color-coded (e.g., 'Expert' as purple),_so that_ I have a fast, clear, and gamified visual summary of my profile.
@@ -105,7 +105,7 @@ The following user stories capture the core goals and benefits for the primary u
 
 ## Project Stakeholders
 
-This is a solo endeavour, meaning I will be solely responsible for guiding and managing every aspect of the product development process. This includes defining the overall vision and scope to ensure that the project aligns with the intended goals and requirements. I will oversee the delivery timeline, making sure that milestones are met and that the project stays on schedule. Additionally, I will track activities using a KanBan board to maintain transparency and organization of tasks. The development tasks I will handle encompass all stages from initial build to testing and final deployment, ensuring that the product is developed, tested thoroughly, and deployed successfully.
+This is a solo endeavour, meaning I will be solely responsible for guiding and managing every aspect of the product development process. This includes defining the overall vision and scope to ensure that the project aligns with the intended goals and requirements. I will oversee the delivery timeline, making sure that milestones are met and that the project stays on schedule. Additionally, I will track activities using a KanBan board to maintain transparency and organisation of tasks. The development tasks I will handle encompass all stages from initial build to testing and final deployment, ensuring that the product is developed, tested thoroughly, and deployed successfully.
 
 ## Project Risks
 
@@ -142,13 +142,13 @@ The screenshot below shows an example of the blank "feature" template, prior to 
 
 <img src="./assets/Ticket%20Template.png" alt="Ticket template with acceptance criteria and definition of done" width="1000px">
 
-### Activity Sizing
+### Activity Sising
 
-Using custom labels in GitHub, I assigned each ticket or issue a size based on the estimated effort, number of unknowns, and expected completion time. I opted for Fibonacci sequence sizes because this method is simple, consistent, and emphasises effort and complexity over time. I also believe that the larger gaps between Fibonacci sizes better represent the increasing complexities and unknowns as you move up the scale than other well-regarded approaches
+Using custom labels in GitHub, I assigned each ticket or issue a sise based on the estimated effort, number of unknowns, and expected completion time. I opted for Fibonacci sequence sises because this method is simple, consistent, and emphasises effort and complexity over time. I also believe that the larger gaps between Fibonacci sises better represent the increasing complexities and unknowns as you move up the scale than other well-regarded approaches
 
-<img src="./assets/Labels.png" alt="ticket sizing using labels in Github" width="1000px">
+<img src="./assets/Labels.png" alt="ticket sising using labels in Github" width="1000px">
 
-To ensure sizing was as effective as possible, it was important to make sure tasks were sized consistently, to do this, I used the below guide to accurately size each ticket based on the existing system as well as my current knowledge, skills and understanding.
+To ensure sising was as effective as possible, it was important to make sure tasks were sised consistently, to do this, I used the below guide to accurately sise each ticket based on the existing system as well as my current knowledge, skills and understanding.
 
 - 0 - Very simple tasks that are well understood and require little to no effort.
 - 1 - Small tasks that are simple, without unknowns, but will take a short time to implement.
@@ -159,9 +159,17 @@ To ensure sizing was as effective as possible, it was important to make sure tas
 
 ## Product Design
 
-### Wireframes
+### Wireframes
+
+I created a single wireframe mock-up based on the preceding activity diagram. The aim of this exercise was to test a high-level UI design concept to verify a potential solution without the substantial effort of full design mock-ups.
+
+The product scope includes a User Input Form and a Top Trump Display feature. The form is designed to gather profile data (name, client, skills), while the display shows this information in an engaging visual format.
 
 <img src="./assets/AE-Wireframe-Wireframe.jpg" alt="Design wireframes for Desktop" width="1000px">
+
+Wireframing emphasises the core structure: layout, information hierarchy, and user flow. This vital step guarantees a solid design foundation before visual aesthetics are added. Additionally, this simple mock-up serves as an effective communication tool for gathering early, targeted feedback, enabling us to identify and address usability issues much earlier in the process.
+
+To meet the responsive design requirement, the wireframe features both a desktop and a mobile version. The design is clearly divided into the Input Phase (Form) and the Result Phase (Top Trump Display) to demonstrate the full user journey and final output. For this initial stage, only the "happy path" user flow has been designed; validation and error notifications will be addressed during the complete design phase.
 
 ### Process Flow
 
@@ -169,7 +177,15 @@ To ensure sizing was as effective as possible, it was important to make sure tas
 
 ### Error Handling and Validation
 
+The wireframe addresses essential aspects of data integrity and user experience through specific validation and error messages on the form.
+
 <img src="./assets/Error validation.png" alt="Error validation mock up" width="1000px">
+
+Input Validation: All input boxes have validation to ensure they are not empty. When validation fails, an inline error message appears directly below the relevant input field to guide the user promptly.
+
+Skills Constraint: The skills section enforces a specific business rule: users must enter fewer than five skills. If the limit is exceeded, an appropriate in-line error message will appear near the input area.
+
+API Error Display: If an API fetch for industry-standard skills fails, a clear error message will appear in the skills section to alert the user to the failure and any potential impact on the form's functionality.
 
 ## Development
 
@@ -179,16 +195,16 @@ To ensure sizing was as effective as possible, it was important to make sure tas
 
 The project uses **GitHub Actions** to create a reliable and efficient Continuous Integration/Continuous Deployment (CI/CD) pipeline, guaranteeing code quality and smooth delivery to the production environment hosted on **GitHub Pages**. This automated pipeline consists of three separate stages.
 
+<img src="./assets/PIPELINE.png" alt="CI CD Pipeline runs tests, build and deploy phase" width="1000px">
+
 1. **Test**: This stage runs the complete test suite using `npm run test --coverage`. This step is essential for verifying functionality and code robustness, acting as a safeguard to detect potential issues before deployment.
-2. **Build**: In this stage, the production build is generated. It securely retrieves **secret API keys** and the deployment **URL slug** (e.g., for routing or configuration) from **Environment Secrets** and incorporates them into the `npm build` command. This method ensures security by keeping sensitive credentials confidential.
+2. **Build**: In this stage, the production build is generated. It securely retrieves **secret API keys** and the deployment **URL slug** (e.g., for API route configuration) from **Environment Secrets** and incorporates them into the `npm build` command. This method ensures security by keeping sensitive credentials confidential.
 3. **Deploy**: The final step deploys the fully built application to the live production environment hosted on **GitHub Pages**.
 
 ### Optimisation and Security
 
 - **Compute Preservation**: The pipeline is designed to run exclusively on the `main` branch, which is dedicated solely to deployment targets. This intentional choice conserves computing resources by avoiding unnecessary builds on the `develop` branch or feature branches, where work-in-progress is generally merged.
 - **Security and Robustness**: Security is evidenced by utilising **Environment Secrets** to hide sensitive API keys. Robustness in delivery is maintained by enforcing comprehensive testing before every deployment, preventing faulty code from reaching production.
-
-<img src="./assets/PIPELINE.png" alt="CI CD Pipeline runs tests, build and deploy phase" width="1000px">
 
 ### Accessibility and Performance Metrics
 
@@ -199,6 +215,52 @@ The project uses **GitHub Actions** to create a reliable and efficient Continuou
 <img src="./assets/AE-Wireframe-TDD.jpg" alt="TDD Phased approach to building the list component" width="1000px">
 
 ## Analysis and Reflection
+
+### 1. Functional Requirements: User Interface (UI)
+
+#### Achieved
+
+- **User Identification Inputs**: CDS TextInput components for Full Name and Client identification.
+  - CDS TextInput implemented for the Full Name and Client fields with validation for empty fields.
+- **Skill Selection Interface**: CDS ComboBox for selecting skills and a corresponding CDS Dropdown for proficiency level selection.
+  - CDS Combobox implemented with industry standard skills label API to display a filtered list of skills.
+- **Dynamic Skill List**: A visible, dynamic list that appends selected skills/levels, strictly limited to five items.
+  - Skills List supports a skills 'Title' and 'Level'. Users can add or remove between zero and five skills with list limit validation >5.
+- **Card Generation Trigger**: A primary CDS Button labelled "Generate Top Trump" to initiate the final output rendering.
+  - Primary button implemented to change the state of the page from the form to the TopTrump, with validation stage implemented on the form component to enable the flip.
+- **Profile Display**: Displays the generated card, including a CDS Avatar, Full Name, Client, and skills rendered as color-coded CDS Tags.
+  - TopTrump implemented, transposing the form data into a TopTrump format with CDS avatar as the template for a profile picture (_'Could have'_ feature).
+
+#### Not achieved
+
+- **Profile Picture**: A file upload that accepts images as .jpg, .png, and .svg that is displayed in place of the CDS Avatar when provided.
+  - File upload and image usage not implemented (_'Could have'_ feature).
+
+### 2. Functional Requirements: Logic and Data
+
+#### Achieved
+
+- **Input Validation** : Client-side validation to ensure text fields (Full Name, Client) are non-empty.
+  - Implemented when the 'Generate TopTrump' button is selected. Invalid fields display red-error text with insights to resovle the issue.
+- **Skill Level Colour Logic**: Logic to map proficiency levels to specific colours for the CDS Tags: Expert: purple, Advanced: blue, Intermediate: green, Beginner: grey.
+  - Implemented the skill-level-coloring logic with tags the match the listed proficiencies.
+- **Skill Limit Validation**: Logic to enforce the maximum of 5 skills, displaying a custom inline error message upon attempted overflow.
+  - Attempting to add more than 5 skills will display a validation error on the Skill Input row, demostrating the limitation of the component.
+- **Skill List Source**: Skill data for the ComboBox is sourced via an API call integration with industry standard skills API.
+  - Use of the skills combo box envokes and API call to fetch industry standard skills labels and display the result in the CDS Combobox list.
+
+### 3. Non-functional Requirements (NFRs)
+
+#### Achieved
+
+- **Downloadable Output**:The final Top Trump card must be exportable (e.g., as a PNG or PDF).
+  - The TopTrump page features a download icon which enables users to download a snapshot of their drafted TopTrump with an appropriate file label as a .png.
+- **Accessibility Compliance**: Audit compliance using WAVE, Arc Toolkit, and axeDevTools reports. Preliminary audit via Google Lighthouse.
+  - Accessibility needs met, with reports and metrics across 4 unique softwares indicating compliance with WCAG 2.4.
+- **Performance**: Generation process under 1 second perceived response time. Measured via Google Lighthouse performance score (Target: 100/100).
+  - Lighthouse report indicates a score of 100 (maximum) for the performance of the application against web application performance standards.
+- **Responsive Design**: Application must be usable on both desktop and mobile devices.
+  - Screenshots below show appropriate handling of components across desktop and mobile resolutions.
 
 ## Final Product: Desktop and Mobile view
 
