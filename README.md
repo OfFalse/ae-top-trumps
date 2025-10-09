@@ -1,8 +1,8 @@
+The deployed service which can be found at: https://offalse.github.io/ae-top-trumps/
+
 # Top Trump Profile Generator
 
 The main goal of this project is to create a highly accessible and efficient client-side application that standardises and gamifies the display of professional profiles in the workplace. This tool, the **Top Trump Profile Generator**, tackles the current absence of an automated, visually appealing way to generate standardised team profiles. It enables users to input essential professional data (Full Name, Client) and choose up to five key skills, each with a corresponding proficiency level, resulting in a downloadable, colour-coded Top Trump Card.
-
----
 
 ## Project Roadmap and Scope Definition
 
@@ -10,7 +10,7 @@ The project adhered to a timeline, prioritising both core functionality and seve
 
 The project scope is strictly defined as a **UI-only application**. The focus is placed intensely on client-side state management, input validation, component rendering, and rigorous NFR compliance. Backend integration is limited to fetching industry standard skill labels via an **API call** for the skill list. Crucially, the application is **stateless**, meaning data is not persisted after the browser session.
 
-## ![project_plan_drawio](./assets/AE-Wireframe-Project%20Plan.drawio.png)
+<img src="./assets/AE-Wireframe-Project%20Plan.drawio.png" alt="Project plan is phases" width="1000px">
 
 ## Business Justification and Strategic Value
 
@@ -27,8 +27,6 @@ The choice of a "Top Trump" format is a deliberate strategy to utilise the princ
 - **Promotes Data Simplification**: By restricting skills to five, the format compels consultants and their managers to focus on their most relevant and impactful capabilities, cutting through the complexity of exhaustive, multi-page CVs. It addresses the question: "What are you an expert in _right now_?".
 - **Enhances Engagement**: Introducing a fun, slightly competitive element to profile management can boost user adoption and motivate employees to update their profiles regularly. It cultivates a culture where skills and professional development are openly recognised and valued.
 
----
-
 ## Technology Stack Rationale
 
 The development leverages a modern technology stack, utilising **React with TypeScript** for robust code architecture and integration with the **Carbon Design System (CDS)** to ensure enterprise-grade accessibility and responsiveness. The selection of this stack was a strategic decision aimed at maximising performance, scalability, and development speed.
@@ -39,7 +37,7 @@ The development leverages a modern technology stack, utilising **React with Type
 
 Choosing an established design system like Carbon instead of building components from scratch or using a more generic library like Bootstrap was crucial for creating a professional and accessible user interface rapidly. CDS is specifically designed for enterprise applications, providing a comprehensive set of pre-built, **WCAG-compliant** components. This ensures that the tool is not only visually consistent and professional but also usable by all employees, regardless of their abilities. These pre-built features saved hundreds of hours of development that would have otherwise been spent on designing, building, and testing customised UI elements, allowing the project to focus on its core business logic.
 
-## Project Requirements
+## Project Requirements and User Stories
 
 The following requirements were defined in consultation with stakeholders and prioritised using the MoSCoW methodology (assumed complete).
 
@@ -52,7 +50,7 @@ A method for categorizing requirements to manage stakeholder expectations and pr
 - **Could-have:** Desirable "nice-to-have" items with a smaller impact.
 - **Won't-have (this time):** Explicitly out of scope for the current timeframe.
 
-![MoSCoW_functional_requirements](./assets/AE-Wireframe-MoSCoW.jpg)
+<img src="./assets/AE-Wireframe-MoSCoW.jpg" alt="Moscow functionality requirements" width="1000px">
 
 ### 1. Functional Requirements: User Interface (UI)
 
@@ -107,7 +105,7 @@ The following user stories capture the core goals and benefits for the primary u
 
 ## Project Stakeholders
 
-As this is a solo endeavour, I will oversee the product, including the vision and scope definition, delivery, ensuring adherence to timelines, activity tracking on a KanBan board, and development tasks, including all build, testing, and deployment activities related to this product.
+This is a solo endeavour, meaning I will be solely responsible for guiding and managing every aspect of the product development process. This includes defining the overall vision and scope to ensure that the project aligns with the intended goals and requirements. I will oversee the delivery timeline, making sure that milestones are met and that the project stays on schedule. Additionally, I will track activities using a KanBan board to maintain transparency and organization of tasks. The development tasks I will handle encompass all stages from initial build to testing and final deployment, ensuring that the product is developed, tested thoroughly, and deployed successfully.
 
 ## Project Risks
 
@@ -134,19 +132,21 @@ I used GitHub Projects, integrated with my repository, to set up a KanBan board 
 
 Other sections, such as "Ready" and "Review", have been omitted from this list as it is a solo endeavour and does not require external validation.
 
-![Github Projects Kanban Board](./assets/AE-Kanban.png)
+<img src="./assets/AE-Kanban.png" alt="Github Projects Kanban Board" width="1000px">
 
-### Ticket Templating and Sizing
+### Ticket Templating
 
 One of the initial stages of the project involved setting up ticket templates. These templates ensured tickets were created with a consistent format and information by pre-filling specific questions or headings each time a new ticket was made. To make these templates as relevant as possible, I created a single template for all types of issues, called “feature,” as the structure could be applied universally.
 
 The screenshot below shows an example of the blank "feature" template, prior to filling in the details. The template includes four main sections: Title, Definition of Done and Acceptance Criteria. These predefined fields reduce the time needed to create detailed tickets, streamline the process, and minimise the risk of missing important information by prompting the author to provide concise and specific information.
 
-![Ticket template with acceptance criteria and definition of done](./assets/Ticket%20Template.png)
+<img src="./assets/Ticket%20Template.png" alt="Ticket template with acceptance criteria and definition of done" width="1000px">
+
+### Activity Sizing
 
 Using custom labels in GitHub, I assigned each ticket or issue a size based on the estimated effort, number of unknowns, and expected completion time. I opted for Fibonacci sequence sizes because this method is simple, consistent, and emphasises effort and complexity over time. I also believe that the larger gaps between Fibonacci sizes better represent the increasing complexities and unknowns as you move up the scale than other well-regarded approaches
 
-![ticket sizing using labels in Github](./assets/Labels.png)
+<img src="./assets/Labels.png" alt="ticket sizing using labels in Github" width="1000px">
 
 To ensure sizing was as effective as possible, it was important to make sure tasks were sized consistently, to do this, I used the below guide to accurately size each ticket based on the existing system as well as my current knowledge, skills and understanding.
 
@@ -159,15 +159,17 @@ To ensure sizing was as effective as possible, it was important to make sure tas
 
 ## Product Design
 
-## Wireframes
+### Wireframes
 
-![Design wireframes for Desktop](./assets/AE-Wireframe-Wireframe.jpg)
+<img src="./assets/AE-Wireframe-Wireframe.jpg" alt="Design wireframes for Desktop" width="1000px">
 
-## Process Flow
+### Process Flow
 
-![Design process flow](./assets/AE-Wireframe-Activity%20Flow.jpg)
+<img src="./assets/AE-Wireframe-Activity%20Flow.jpg" alt="Interaction process flow" width="1000px">
 
-## Error Handling and Validation
+### Error Handling and Validation
+
+<img src="./assets/Error validation.png" alt="Error validation mock up" width="1000px">
 
 ## Development
 
@@ -186,18 +188,15 @@ The project uses **GitHub Actions** to create a reliable and efficient Continuou
 - **Compute Preservation**: The pipeline is designed to run exclusively on the `main` branch, which is dedicated solely to deployment targets. This intentional choice conserves computing resources by avoiding unnecessary builds on the `develop` branch or feature branches, where work-in-progress is generally merged.
 - **Security and Robustness**: Security is evidenced by utilising **Environment Secrets** to hide sensitive API keys. Robustness in delivery is maintained by enforcing comprehensive testing before every deployment, preventing faulty code from reaching production.
 
-![CI CD Pipeline runs tests, build and deploy phase](./assets/PIPELINE.png)
+<img src="./assets/PIPELINE.png" alt="CI CD Pipeline runs tests, build and deploy phase" width="1000px">
 
 ### Accessibility and Performance Metrics
 
-![Lighthouse scores](./assets/Lighthouse-100.png)
-![WAVE report](./assets/WAVE.png)
-![axeTools report](./assets/axeTools.png)
-![ARC report](./assets/ARC.png)
+<img src="./assets/AE-Wireframe-Accessibility.jpg" alt="Lighthouse scores and WAVE, axe, and ARC DevTools accessiblity reports" width="1000px">
 
 ### Test-Driven Development
 
-![TDD Phased approach to building the list component](./assets/AE-Wireframe-TDD.jpg)
+<img src="./assets/AE-Wireframe-TDD.jpg" alt="TDD Phased approach to building the list component" width="1000px">
 
 ## Analysis and Reflection
 
@@ -207,11 +206,11 @@ Screenshots of the final product are available below, as well as a link to the d
 
 ### Desktop View
 
-![Desktop view](./assets/AE-Desktop.jpg)
+<img src="./assets/AE-Desktop.jpg" alt="Desktop view" width="1000px">
 
 ### Mobile View
 
-![Mobile View](./assets/AE-Mobile.jpg)
+<img src="./assets/AE-Mobile.jpg" alt="Mobile View" width="1000px">
 
 ## Future Extensibility
 
