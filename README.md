@@ -6,17 +6,17 @@ The main goal of this project is to create a highly accessible and efficient cli
 
 ## Project Roadmap and Scope Definition
 
-The project adhered to a timeline, prioritising both core functionality and several Non-Functional Requirements (NFRs).
-
 The project scope is strictly defined as a **UI-only application**. The focus is placed intensely on client-side state management, input validation, component rendering, and rigorous NFR compliance. Backend integration is limited to fetching industry standard skill labels via an **API call** for the skill list. Crucially, the application is **stateless**, meaning data is not persisted after the browser session.
+
+Demonstrated below is an overview of the milestones set out to be achieved in order to deliver a Top Trump Profile Generator.
 
 <img src="./assets/AE-Wireframe-Project%20Plan.drawio.png" alt="Project plan is phases" width="1000px">
 
 ## Business Justification and Strategic Value
 
-In a fast-paced **consultancy environment**, the ability to quickly assemble effective project teams is a vital competitive advantage. Resourcing managers, responsible for assigning candidates to roles, and bid teams constantly face the challenge of evaluating numerous candidates to find the ideal fit for client engagements. Traditional methods, such as manually sifting through CVs or complex spreadsheets, are time-consuming and prone to inconsistency. This project addresses this inefficiency by developing a tool for instant, standardised skills visualisation.
+In a fast-paced **consultancy environment**, the ability to quickly assemble effective project teams is a vital competitive advantage. Resourcing managers, responsible for assigning candidates to roles, constantly face the challenge of evaluating numerous candidates to find the ideal fit for client engagements. Traditional methods, such as manually sifting through CVs or complex spreadsheets, are time-consuming and prone to inconsistency. This project addresses this inefficiency by developing a tool for instant, standardised skills visualisation.
 
-The core business driver is the need for **rapid evaluation**. Resourcers must assess a consultant's core competencies **at a glance**. By distilling a profile down to five key skills in a clear, visual format, the Top Trump Generator enables quick comparisons. The skills list must be based on **industry standards** to align internal descriptions with client terminology in Request for Proposals and project briefs, streamlining bidding and enhancing professional engagements.
+The core business driver is the need for **rapid evaluation**. Resourcers must assess a consultant's core competencies **at a glance**. By distilling a profile down to five key skills in a clear, visual format, the Top Trump Generator enables quick comparisons. The skills list must be based on **industry standards** to align internal descriptions with client terminology in Request for Proposals and project briefs, streamlining and enhancing professional engagements.
 
 ### Gamification: The Top Trump Format
 
@@ -95,7 +95,7 @@ The following user stories capture the core goals and benefits for the primary u
    _As a_ team member, _I want_ to be able to select a maximum of five skills and their corresponding proficiency levels from a standardised list, _so that_ the generated card is focused and accurately reflects my core expertise without being overloaded.
 
 3. **Card Generation and Visual Feedback**
-   _As a_ user, _I want_ to click a button and see the final Top Trump card displayed immediately, with skills color-coded (e.g., 'Expert' as purple),_so that_ I have a fast, clear, and gamified visual summary of my profile.
+   _As a_ user, _I want_ to click a button and see the final Top Trump card displayed immediately, with skills color-coded (e.g., 'Expert' as purple), _so that_ I have a fast, clear, and gamified visual summary of my profile.
 
 4. **Accessibility Compliance (NFR)**
    _As a_ user relying on assistive technologies (like a screen reader), _I want_ the application's forms, buttons, and generated content to be fully accessible and correctly labeled, _so that_ I can use the profile generator effectively and without barriers.
@@ -125,10 +125,10 @@ To ensure project risks are factored into the development process, I created a r
 
 I used GitHub Projects, integrated with my repository, to set up a KanBan board featuring five key sections.
 
-- Backlog - Tasks that have been documented and are ready for development to commence.
-- In-Progress - Tasks currently being worked on but not yet finished.
-- Done- Completed and merged tasks into main branch.
-- Not required - To help identify redundancies in tickets or tickets who's scope has been addressed elsewhere.
+- **Backlog** - Tasks that have been documented and are ready for development to commence.
+- **In Progress** - Tasks currently being worked on but not yet finished.
+- **Done** and merged tasks into main branch.
+- **Not Required** - To help identify redundancies in tickets or tickets who's scope has been addressed elsewhere.
 
 Other sections, such as "Ready" and "Review", have been omitted from this list as it is a solo endeavour and does not require external validation.
 
@@ -138,7 +138,7 @@ Other sections, such as "Ready" and "Review", have been omitted from this list a
 
 One of the initial stages of the project involved setting up ticket templates. These templates ensured tickets were created with a consistent format and information by pre-filling specific questions or headings each time a new ticket was made. To make these templates as relevant as possible, I created a single template for all types of issues, called “feature,” as the structure could be applied universally.
 
-The screenshot below shows an example of the blank "feature" template, prior to filling in the details. The template includes four main sections: Title, Definition of Done and Acceptance Criteria. These predefined fields reduce the time needed to create detailed tickets, streamline the process, and minimise the risk of missing important information by prompting the author to provide concise and specific information.
+The screenshot below shows an example of the blank "feature" template, prior to filling in the details. The template includes four main sections: **Title, Definition of Done** and **Acceptance Criteria**. These predefined fields reduce the time needed to create detailed tickets, streamline the process, and minimise the risk of missing important information by prompting the author to provide concise and specific information.
 
 <img src="./assets/Ticket%20Template.png" alt="Ticket template with acceptance criteria and definition of done" width="1000px">
 
@@ -167,7 +167,7 @@ The product scope includes a User Input Form and a Top Trump Display feature. Th
 
 <img src="./assets/AE-Wireframe-Wireframe.jpg" alt="Design wireframes for Desktop" width="1000px">
 
-Wireframing emphasises the core structure: layout, information hierarchy, and user flow. This vital step guarantees a solid design foundation before visual aesthetics are added. Additionally, this simple mock-up serves as an effective communication tool for gathering early, targeted feedback, enabling us to identify and address usability issues much earlier in the process.
+Wireframing emphasises the core structure: layout, information hierarchy, and user flow. This vital step guarantees a solid design foundation before visual aesthetics are added. Additionally, this simple mock-up serves as an effective communication tool for gathering early, targeted feedback, enabling me to identify and address usability issues much earlier in the process.
 
 To meet the responsive design requirement, the wireframe features both a desktop and a mobile version. The design is clearly divided into the Input Phase (Form) and the Result Phase (Top Trump Display) to demonstrate the full user journey and final output. For this initial stage, only the "happy path" user flow has been designed; validation and error notifications will be addressed during the complete design phase.
 
@@ -181,11 +181,11 @@ The wireframe addresses essential aspects of data integrity and user experience 
 
 <img src="./assets/Error validation.png" alt="Error validation mock up" width="1000px">
 
-Input Validation: All input boxes have validation to ensure they are not empty. When validation fails, an inline error message appears directly below the relevant input field to guide the user promptly.
+**Input Validation:** All input boxes have validation to ensure they are not empty. When validation fails, an inline error message appears directly below the relevant input field to guide the user promptly.
 
-Skills Constraint: The skills section enforces a specific business rule: users must enter fewer than five skills. If the limit is exceeded, an appropriate in-line error message will appear near the input area.
+**Skills Constraint:** The skills section enforces a specific business rule: users must enter fewer than five skills. If the limit is exceeded, an appropriate in-line error message will appear near the input area.
 
-API Error Display: If an API fetch for industry-standard skills fails, a clear error message will appear in the skills section to alert the user to the failure and any potential impact on the form's functionality.
+**API Error Display:** If an API fetch for industry-standard skills fails, a clear error message will appear in the skills section to alert the user to the failure and any potential impact on the form's functionality.
 
 ## Development Tools
 
@@ -206,11 +206,11 @@ The project uses **GitHub Actions** to create a reliable and efficient Continuou
 
 ### Accessibility and Performance Metrics
 
-Achieving a nominal (zero-error) report from automated auditing tools is a critical compliance checkpoint, particularly for interactive elements such as the user data collection form. This project utilised automated testing via WAVE, ARC Toolkit, Axe DevTools, and Lighthouse to ensure the user interface meets the WCAG 2.4 guidelines, which focus on Operable components and effective Navigation and Orientation.
+Achieving a nominal (zero-error) report from automated auditing tools is a critical compliance checkpoint, particularly for interactive elements such as the user data collection form. This project utilised automated testing via **WAVE, ARC Toolkit, Axe DevTools**, and **Lighthouse** to ensure the user interface meets the WCAG 2.4 guidelines, which focus on Operable components and effective Navigation and Orientation.
 
 <img src="./assets/AE-Wireframe-Accessibility.jpg" alt="Lighthouse scores and WAVE, axe, and ARC DevTools accessiblity reports" width="1000px">
 
-Nominal results from these tools confirm robust compliance across essential WCAG 2.4 success criteria, ensuring the form is fully keyboard operable and logically navigable. Specifically, the audit results validate adherence to key criteria including SC 2.4.1 (Bypass Blocks), SC 2.4.3 (Focus Order), SC 2.4.4 (Link Purpose), SC 2.4.7 (Focus Visible), and SC 2.4.6 (Headings and Labels).
+Nominal results from these tools confirm robust compliance across essential WCAG 2.4 success criteria, ensuring the form is fully keyboard operable and logically navigable. Specifically, the audit results validate adherence to key criteria..
 
 By passing these automated checks, the form demonstrates foundational accessibility that enables all users, regardless of input method, to understand where they are on the page, navigate between fields, and complete the data submission process efficiently.
 
@@ -222,13 +222,13 @@ The Skill List Component, which consumes and displays user skill data using the 
 
 The TDD cycle followed a progressive, three-stage implementation path:
 
-1. Component Shell and List Rendering
+1. **Component Shell and List Rendering**
    The initial TDD cycle focused on the fundamental Red (failing test) of rendering. A test was written to verify that the CDS table component's wrapper/container was successfully mounted and visible in the DOM, confirming the foundational structure of the list. The Green phase involved the minimal code necessary to satisfy this test, followed by refactoring to ensure proper state initialisation before proceeding.
 
-2. Header Verification
+2. **Header Verification**
    The second stage targeted the component's orientation elements. New tests were established to confirm the presence and correct content of the mandatory column headers. This verified that the CDS table structure correctly rendered the three required header cells: Title, Skill Level, and Actions. Tests failed until the component's template correctly mapped and displayed these specific string values.
 
-3. Item and Action Rendering
+3. **Item and Action Rendering**
    The final and most critical TDD phase involved testing the data presentation and interactive elements. Generic entries were used to test iteration and data binding to their appropriate table sections.
 
 This methodical TDD sequence ensured the list component was robust, visually accurate, and fully compliant with the expected keyboard navigation and semantic requirements validated in the accessibility reports.
