@@ -1,3 +1,4 @@
+https://github.com/OfFalse/ae-top-trumps
 The deployed service which can be found at: https://offalse.github.io/ae-top-trumps/
 
 # Top Trump Profile Generator
